@@ -13,6 +13,17 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 
+    <!-- Slick Slider CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+
+    <!-- jQuery (required for Slick) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Slick Slider JS -->
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
     <!-- Custom Fonts -->
     <style>
         @font-face {
@@ -312,7 +323,7 @@
         .header {
             transition: all 0.3s ease;
             backdrop-filter: blur(10px);
-            background: #5a86ad8f;
+            background: #5a86ad59;
         }
 
         .header.scrolled {
@@ -369,8 +380,12 @@
 
         /* Mobile Menu Styles */
         #mobile-menu {
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            width: 100vw;
+            height: 100vh;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
         }
 
         .mobile-nav-link {
@@ -626,6 +641,116 @@
                 max-height: 60px;
             }
         }
+
+        /* Custom Slick Slider Styles */
+        .services-slider-container {
+            margin: 0 -10px;
+        }
+
+        .services-slider-container .service-card {
+            padding: 0 10px;
+            box-sizing: border-box;
+        }
+
+        .services-slider-container .slick-track {
+            display: flex;
+            align-items: stretch;
+        }
+
+        .services-slider-container .slick-slide {
+            height: auto;
+        }
+
+        .services-slider-container .slick-slide>div {
+            height: 100%;
+        }
+
+        .services-slider-container .slick-dots {
+            bottom: -50px;
+            text-align: center;
+        }
+
+        .services-slider-container .slick-dots li {
+            margin: 0 5px;
+        }
+
+        .services-slider-container .slick-dots li button {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #A8AFB6;
+            border: none;
+            font-size: 0;
+            transition: all 0.3s ease;
+        }
+
+        .services-slider-container .slick-dots li button:hover,
+        .services-slider-container .slick-dots li.slick-active button {
+            background-color: #5A86AD;
+            transform: scale(1.2);
+        }
+
+        .services-slider-container .slick-prev,
+        .services-slider-container .slick-next {
+            width: 50px;
+            height: 50px;
+            background-color: white;
+            border: 2px solid #E5E7EB;
+            border-radius: 50%;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .services-slider-container .slick-prev:hover,
+        .services-slider-container .slick-next:hover {
+            background-color: #5A86AD;
+            border-color: #5A86AD;
+            transform: scale(1.1);
+        }
+
+        .services-slider-container .slick-prev:before,
+        .services-slider-container .slick-next:before {
+            color: #5A86AD;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .services-slider-container .slick-prev:hover:before,
+        .services-slider-container .slick-next:hover:before {
+            color: white;
+        }
+
+        .services-slider-container .slick-prev {
+            left: -25px;
+        }
+
+        .services-slider-container .slick-next {
+            right: -25px;
+        }
+
+        @media (max-width: 768px) {
+            .services-slider-container .slick-prev {
+                left: -15px;
+            }
+
+            .services-slider-container .slick-next {
+                right: -15px;
+            }
+
+            .services-slider-container .slick-prev,
+            .services-slider-container .slick-next {
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        .slick-dots li button:before {
+
+            line-height: 13px;
+
+            width: 12px;
+        }
     </style>
 </head>
 
@@ -636,15 +761,16 @@
             <div class="flex items-center justify-between">
                 <!-- Logo -->
                 <a href="#" class="flex items-center logo-animation">
-                    <img src="logo.svg" alt="AL ATHEL ESTABLISHMENT" class="h-8 w-auto object-contain logo-filter">
+                    <img src="logo.svg" alt="AL ATHEL ESTABLISHMENT" class="h-12 w-auto object-contain logo-filter">
                 </a>
 
                 <!-- Desktop Navigation -->
-                <nav class="hidden md:flex items-center space-x-8">
+                <nav class="hidden md:flex items-center space-x-6">
                     <a href="#home" class="nav-link text-sm font-medium uppercase tracking-wider">HOME</a>
-                    <a href="#about" class="nav-link text-sm font-medium uppercase tracking-wider">ABOUT US</a>
+                    <a href="#about" class="nav-link text-sm font-medium uppercase tracking-wider">ABOUT</a>
                     <a href="#services" class="nav-link text-sm font-medium uppercase tracking-wider">SERVICES</a>
                     <a href="#projects" class="nav-link text-sm font-medium uppercase tracking-wider">PROJECTS</a>
+                    <a href="#team" class="nav-link text-sm font-medium uppercase tracking-wider">TEAM</a>
                     <a href="#contact" class="nav-link text-sm font-medium uppercase tracking-wider">CONTACT</a>
                 </nav>
 
@@ -660,7 +786,7 @@
 
         <!-- Mobile Navigation -->
         <div id="mobile-menu"
-            class="md:hidden fixed inset-0 bg-white/95 backdrop-blur-md transform translate-x-full transition-transform duration-300 ease-in-out z-40">
+            class="md:hidden fixed inset-0 w-full h-full bg-white transform translate-x-full transition-transform duration-300 ease-in-out z-40">
             <!-- Close Button -->
             <button id="mobile-menu-close"
                 class="absolute top-6 right-6 w-10 h-10 flex items-center justify-center bg-gray-100 rounded-full hover:bg-gray-200 transition-colors">
@@ -671,18 +797,19 @@
             </button>
 
             <!-- Menu Content -->
-            <div class="flex flex-col h-full pt-20 pb-8 px-8">
+            <div class="flex flex-col w-full h-full pt-20 pb-8 px-8">
                 <!-- Navigation Links -->
-                <nav class="flex-1 flex flex-col justify-center space-y-6">
+                <nav class="flex-1 flex flex-col justify-center space-y-6 w-full">
                     <a href="#home"
                         class="mobile-nav-link text-lg font-heading font-medium text-gray-dark hover:text-primary transition-colors py-3 px-4 rounded-lg hover:bg-gray-50 border-b border-gray-100">HOME</a>
                     <a href="#about"
-                        class="mobile-nav-link text-lg font-heading font-medium text-gray-dark hover:text-primary transition-colors py-3 px-4 rounded-lg hover:bg-gray-50 border-b border-gray-100">ABOUT
-                        US</a>
+                        class="mobile-nav-link text-lg font-heading font-medium text-gray-dark hover:text-primary transition-colors py-3 px-4 rounded-lg hover:bg-gray-50 border-b border-gray-100">ABOUT</a>
                     <a href="#services"
                         class="mobile-nav-link text-lg font-heading font-medium text-gray-dark hover:text-primary transition-colors py-3 px-4 rounded-lg hover:bg-gray-50 border-b border-gray-100">SERVICES</a>
                     <a href="#projects"
                         class="mobile-nav-link text-lg font-heading font-medium text-gray-dark hover:text-primary transition-colors py-3 px-4 rounded-lg hover:bg-gray-50 border-b border-gray-100">PROJECTS</a>
+                    <a href="#team"
+                        class="mobile-nav-link text-lg font-heading font-medium text-gray-dark hover:text-primary transition-colors py-3 px-4 rounded-lg hover:bg-gray-50 border-b border-gray-100">TEAM</a>
                     <a href="#contact"
                         class="mobile-nav-link text-lg font-heading font-medium text-gray-dark hover:text-primary transition-colors py-3 px-4 rounded-lg hover:bg-gray-50 border-b border-gray-100">CONTACT</a>
                 </nav>
@@ -860,11 +987,7 @@
                             a safe, inclusive workplace and lasting client relationships.
                         </div>
 
-                        <a href="#vision"
-                            class="inline-block text-sm font-medium text-gray-dark hover:text-primary transition-all duration-300 transform hover:-translate-x-2 slide-in-left"
-                            style="animation-delay: 0.6s;">
-                            <span class="border-b border-current">Discover more about our vision</span>
-                        </a>
+
                     </div>
                 </div>
 
@@ -880,54 +1003,410 @@
             </div>
         </section>
 
-        <!-- Services Section -->
-        <section id="services" class="relative min-h-screen bg-gray-light section-lines fade-in">
-            <div class="flex flex-col md:flex-row min-h-screen">
-                <!-- Image Side -->
-                <div class="w-full md:w-1/2 md:h-[690px] h-96  relative overflow-hidden image-overlay"
-                    style="transform: scale(1);">
-                    <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=2070&amp;q=80"
-                        alt="Construction services" class="w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-tr from-gray-800 to-gray-600 opacity-70"></div>
-                    <div class="absolute inset-0 flex items-center justify-center">
-                        <div class="text-white text-5xl font-thin opacity-30 floating">SERVICES</div>
+        <!-- Why Choose Us Section -->
+        <section id="why-choose-us" class="relative py-20 lg:py-32 bg-white overflow-hidden">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                <!-- Section Header -->
+                <div class="text-center mb-16 animate-fade-in-up">
+                    <span class="text-primary text-sm font-bold uppercase tracking-widest mb-4 block">WHY CHOOSE
+                        US</span>
+                    <h2 class="text-4xl lg:text-6xl font-heading font-medium text-gray-dark mb-6">
+                        Your trusted <span class="text-primary">construction</span> partner
+                    </h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                        We combine experience, innovation, and dedication to deliver exceptional results for every
+                        project.
+                    </p>
+                </div>
+
+                <!-- Features Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Feature 1 -->
+                    <div class="text-center group animate-fade-in-up" style="animation-delay: 0.1s;">
+                        <div
+                            class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
+                            <svg class="w-8 h-8 text-primary group-hover:text-white transition-colors duration-300"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-heading font-bold text-gray-dark mb-3">Quality Assurance</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Rigorous quality control processes ensure every project meets the highest standards.
+                        </p>
+                    </div>
+
+                    <!-- Feature 2 -->
+                    <div class="text-center group animate-fade-in-up" style="animation-delay: 0.2s;">
+                        <div
+                            class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
+                            <svg class="w-8 h-8 text-primary group-hover:text-white transition-colors duration-300"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-heading font-bold text-gray-dark mb-3">On-Time Delivery</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            We pride ourselves on completing projects on schedule without compromising quality.
+                        </p>
+                    </div>
+
+                    <!-- Feature 3 -->
+                    <div class="text-center group animate-fade-in-up" style="animation-delay: 0.3s;">
+                        <div
+                            class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
+                            <svg class="w-8 h-8 text-primary group-hover:text-white transition-colors duration-300"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-heading font-bold text-gray-dark mb-3">Innovation</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Cutting-edge technology and modern construction methods for superior results.
+                        </p>
+                    </div>
+
+                    <!-- Feature 4 -->
+                    <div class="text-center group animate-fade-in-up" style="animation-delay: 0.4s;">
+                        <div
+                            class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
+                            <svg class="w-8 h-8 text-primary group-hover:text-white transition-colors duration-300"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-heading font-bold text-gray-dark mb-3">Expert Team</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Experienced professionals with decades of combined expertise in construction.
+                        </p>
                     </div>
                 </div>
 
-                <!-- Content Side -->
-                <div class="w-full md:w-1/2 bg-white relative">
-                    <!-- <div class="absolute top-0 right-0 w-8 h-8 bg-primary transform rotate-45 origin-bottom-left"></div> -->
-
-                    <div class="p-8 md:p-16 lg:p-20">
-                        <h1 class="text-lg font-heading font-bold text-primary mb-8 tracking-wider slide-in-right"
-                            style="opacity: 1; transform: translateX(0px) scale(1);">WHAT
-                            WE DO</h1>
-                        <h2 class="text-2xl md:text-4xl font-heading font-medium text-gray-dark leading-tight mb-8 slide-in-right"
-                            style="animation-delay: 0.2s; opacity: 1; transform: translateX(0px) scale(1);">End-to-end
-                            construction services across the full project
-                            lifecycle.</h2>
-
-                        <div class="space-y-4 text-sm md:text-base text-gray-600 leading-relaxed mb-8">
-                            <div class="stagger-animation transform hover:translate-x-2 transition-transform duration-300 animate"
-                                style="animation-delay: 0.4s;">• General Contracting &amp; EPC Support</div>
-                            <div class="stagger-animation transform hover:translate-x-2 transition-transform duration-300 animate"
-                                style="animation-delay: 0.5s;">• Residential &amp; Commercial Builds</div>
-                            <div class="stagger-animation transform hover:translate-x-2 transition-transform duration-300 animate"
-                                style="animation-delay: 0.6s;">• Infrastructure &amp; Utilities</div>
-                            <div class="stagger-animation transform hover:translate-x-2 transition-transform duration-300 animate"
-                                style="animation-delay: 0.7s;">• Renovation, Fit-Out &amp; Maintenance</div>
-                            <div class="stagger-animation transform hover:translate-x-2 transition-transform duration-300 animate"
-                                style="animation-delay: 0.8s;">• Project Management &amp; Quality Assurance</div>
-                            <div class="stagger-animation transform hover:translate-x-2 transition-transform duration-300 animate"
-                                style="animation-delay: 0.9s;">• Sustainable &amp; Energy-Efficient Solutions</div>
-                        </div>
-
-                        <a href="#services"
-                            class="inline-block text-sm font-medium text-gray-dark hover:text-primary transition-all duration-300 transform hover:translate-x-2 slide-in-right"
-                            style="animation-delay: 1s; opacity: 1; transform: translateX(0px) scale(1);">
-                            <span class="border-b border-current">Discover more about our services</span>
-                        </a>
+                <!-- Stats Section -->
+                <div class="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 animate-fade-in-up"
+                    style="animation-delay: 0.5s;">
+                    <div class="text-center">
+                        <div class="text-4xl lg:text-5xl font-heading font-bold text-primary mb-2 counter"
+                            data-target="150">0</div>
+                        <div class="text-sm text-gray-600 uppercase tracking-wider">Projects Completed</div>
                     </div>
+                    <div class="text-center">
+                        <div class="text-4xl lg:text-5xl font-heading font-bold text-primary mb-2 counter"
+                            data-target="50">0</div>
+                        <div class="text-sm text-gray-600 uppercase tracking-wider">Happy Clients</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl lg:text-5xl font-heading font-bold text-primary mb-2 counter"
+                            data-target="4">0</div>
+                        <div class="text-sm text-gray-600 uppercase tracking-wider">Years Experience</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl lg:text-5xl font-heading font-bold text-primary mb-2 counter"
+                            data-target="25">0</div>
+                        <div class="text-sm text-gray-600 uppercase tracking-wider">Team Members</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="relative py-20 lg:py-32 bg-[#f0f4f7] overflow-hidden">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                <!-- Section Header -->
+                <div class="text-center mb-16 animate-fade-in-up">
+                    <span class="text-primary text-sm font-bold uppercase tracking-widest mb-4 block">WHAT WE DO</span>
+                    <h2 class="text-4xl lg:text-6xl font-heading font-medium text-gray-dark mb-6">
+                        Our <span class="text-primary">Services</span>
+                    </h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                        End-to-end construction services across the full project lifecycle with expertise in every
+                        aspect of modern construction.
+                    </p>
+                </div>
+
+                <!-- Services Slick Slider -->
+                <div class="services-slider-container">
+                    <!-- Steel Structure Works -->
+                    <div class="service-card">
+                        <div
+                            class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 mx-2">
+                            <div class="aspect-[4/3] overflow-hidden relative">
+                                <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                    alt="Steel Structure Works"
+                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <span
+                                    class="inline-block text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 px-3 py-1 rounded-full mb-3">
+                                    Construction
+                                </span>
+                                <h3
+                                    class="text-xl font-heading font-bold text-gray-dark mb-3 group-hover:text-primary transition-colors duration-300">
+                                    Steel Structure Works
+                                </h3>
+                                <p class="text-gray-600 leading-relaxed text-sm">
+                                    Professional steel fabrication and erection services for industrial and commercial
+                                    projects with precision engineering.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Structure Works -->
+                    <div class="service-card">
+                        <div
+                            class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 mx-2">
+                            <div class="aspect-[4/3] overflow-hidden relative">
+                                <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                    alt="Structure Works"
+                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <span
+                                    class="inline-block text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 px-3 py-1 rounded-full mb-3">
+                                    Structural
+                                </span>
+                                <h3
+                                    class="text-xl font-heading font-bold text-gray-dark mb-3 group-hover:text-primary transition-colors duration-300">
+                                    Structure Works
+                                </h3>
+                                <p class="text-gray-600 leading-relaxed text-sm">
+                                    Comprehensive structural construction including concrete works, foundations, and
+                                    load-bearing systems.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Civil Works -->
+                    <div class="service-card">
+                        <div
+                            class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 mx-2">
+                            <div class="aspect-[4/3] overflow-hidden relative">
+                                <img src="https://images.unsplash.com/photo-1590736969955-71cc94901144?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                    alt="Civil Works"
+                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <span
+                                    class="inline-block text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 px-3 py-1 rounded-full mb-3">
+                                    Infrastructure
+                                </span>
+                                <h3
+                                    class="text-xl font-heading font-bold text-gray-dark mb-3 group-hover:text-primary transition-colors duration-300">
+                                    Civil Works
+                                </h3>
+                                <p class="text-gray-600 leading-relaxed text-sm">
+                                    Infrastructure development including roads, utilities, drainage systems, and site
+                                    preparation works.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Electromechanical Works -->
+                    <div class="service-card">
+                        <div
+                            class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 mx-2">
+                            <div class="aspect-[4/3] overflow-hidden relative">
+                                <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                    alt="Electromechanical Works"
+                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <span
+                                    class="inline-block text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 px-3 py-1 rounded-full mb-3">
+                                    Electrical
+                                </span>
+                                <h3
+                                    class="text-xl font-heading font-bold text-gray-dark mb-3 group-hover:text-primary transition-colors duration-300">
+                                    Electromechanical Works
+                                </h3>
+                                <p class="text-gray-600 leading-relaxed text-sm">
+                                    Complete electrical and mechanical systems installation including power distribution
+                                    and
+                                    automation.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- HVAC Works -->
+                    <div class="service-card">
+                        <div
+                            class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 mx-2">
+                            <div class="aspect-[4/3] overflow-hidden relative">
+                                <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                    alt="HVAC Works"
+                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <span
+                                    class="inline-block text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 px-3 py-1 rounded-full mb-3">
+                                    Climate
+                                </span>
+                                <h3
+                                    class="text-xl font-heading font-bold text-gray-dark mb-3 group-hover:text-primary transition-colors duration-300">
+                                    HVAC Works
+                                </h3>
+                                <p class="text-gray-600 leading-relaxed text-sm">
+                                    Advanced heating, ventilation, and air conditioning systems for optimal indoor
+                                    climate
+                                    control.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Low Current Works -->
+                    <div class="service-card">
+                        <div
+                            class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 mx-2">
+                            <div class="aspect-[4/3] overflow-hidden relative">
+                                <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                    alt="Low Current Works"
+                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <span
+                                    class="inline-block text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 px-3 py-1 rounded-full mb-3">
+                                    Security
+                                </span>
+                                <h3
+                                    class="text-xl font-heading font-bold text-gray-dark mb-3 group-hover:text-primary transition-colors duration-300">
+                                    Low Current Works
+                                </h3>
+                                <p class="text-gray-600 leading-relaxed text-sm">
+                                    Security systems, fire alarms, telecommunications, and building automation systems
+                                    installation.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- IT Solutions -->
+                    <div class="service-card">
+                        <div
+                            class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 mx-2">
+                            <div class="aspect-[4/3] overflow-hidden relative">
+                                <img src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                    alt="IT Solutions"
+                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <span
+                                    class="inline-block text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 px-3 py-1 rounded-full mb-3">
+                                    Technology
+                                </span>
+                                <h3
+                                    class="text-xl font-heading font-bold text-gray-dark mb-3 group-hover:text-primary transition-colors duration-300">
+                                    IT Solutions
+                                </h3>
+                                <p class="text-gray-600 leading-relaxed text-sm">
+                                    Network infrastructure, data centers, smart building technologies, and digital
+                                    integration services.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Finishing Works -->
+                    <div class="service-card">
+                        <div
+                            class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 mx-2">
+                            <div class="aspect-[4/3] overflow-hidden relative">
+                                <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                    alt="Finishing Works"
+                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <span
+                                    class="inline-block text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 px-3 py-1 rounded-full mb-3">
+                                    Finishing
+                                </span>
+                                <h3
+                                    class="text-xl font-heading font-bold text-gray-dark mb-3 group-hover:text-primary transition-colors duration-300">
+                                    Finishing Works
+                                </h3>
+                                <p class="text-gray-600 leading-relaxed text-sm">
+                                    High-quality interior and exterior finishing including flooring, painting, and
+                                    architectural details.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Design, Interior & Exterior Decorative -->
+                    <div class="service-card">
+                        <div
+                            class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 mx-2">
+                            <div class="aspect-[4/3] overflow-hidden relative">
+                                <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                    alt="Design & Decorative Works"
+                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <span
+                                    class="inline-block text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 px-3 py-1 rounded-full mb-3">
+                                    Design
+                                </span>
+                                <h3
+                                    class="text-xl font-heading font-bold text-gray-dark mb-3 group-hover:text-primary transition-colors duration-300">
+                                    Design, Interior & Exterior Decorative
+                                </h3>
+                                <p class="text-gray-600 leading-relaxed text-sm">
+                                    Creative design solutions, interior decoration, and exterior architectural
+                                    enhancement
+                                    services.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Call to Action -->
+                <div class="text-center mt-16 animate-fade-in-up" style="animation-delay: 1s;">
+                    <a href="#contact"
+                        class="inline-flex items-center px-8 py-4 bg-primary text-white font-medium rounded-lg hover:bg-primary-hover transition-all duration-300 transform hover:scale-105 group">
+                        <span>Get Started with Your Project</span>
+                        <svg class="ml-2 w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300"
+                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </a>
                 </div>
             </div>
         </section>
@@ -1622,156 +2101,229 @@
             </div>
         </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="relative py-20 lg:py-32 bg-gray-50">
+        <!-- Team Section -->
+        <section id="team" class="relative py-20 lg:py-32 bg-white overflow-hidden">
             <div class="max-w-7xl mx-auto px-6 lg:px-8">
                 <!-- Section Header -->
-                <div class="mb-16 animate-fade-in-up">
-                    <h2 class="text-4xl lg:text-5xl font-heading font-medium text-gray-dark mb-6">
-                        Get in <span class="text-primary">touch with us</span>
+                <div class="text-center mb-16 animate-fade-in-up">
+                    <span class="text-primary text-sm font-bold uppercase tracking-widest mb-4 block">OUR TEAM</span>
+                    <h2 class="text-4xl lg:text-6xl font-heading font-medium text-gray-dark mb-6">
+                        Meet the <span class="text-primary">experts</span> behind our success
                     </h2>
-                    <p class="text-lg text-gray-600 max-w-2xl">
-                        We're here to help! Whether you have a question about our services, need assistance with your
-                        account, or want to provide feedback, our team is ready to assist you.
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                        Our experienced team of professionals brings decades of combined expertise to every project.
                     </p>
                 </div>
 
-                <!-- Contact Content Grid -->
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
-                    <!-- Left Side - Contact Information -->
-                    <div class="animate-slide-in-left">
-                        <!-- Contact Details -->
-                        <div class="space-y-8 mb-12">
-                            <!-- Email -->
-                            <div class="group">
-                                <div class="flex items-start space-x-4">
-                                    <div
-                                        class="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center group-hover:bg-primary/20 transition-colors duration-300">
-                                        <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor"
-                                            viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
-                                            </path>
-                                        </svg>
-                                    </div>
-                                    <div>
-                                        <h3 class="text-lg font-heading font-medium text-gray-dark mb-1">Email</h3>
-                                        <a href="mailto:ENG_ATB@YAHOO.COM"
-                                            class="text-gray-600 hover:text-primary transition-colors duration-300">
-                                            ENG_ATB@YAHOO.COM
-                                        </a>
-                                    </div>
+                <!-- Team Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Team Member 1 -->
+                    <div class="group text-center animate-fade-in-up" style="animation-delay: 0.1s;">
+                        <div class="relative mb-6 overflow-hidden rounded-2xl">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                alt="Ahmed Al-Rashid"
+                                class="w-full aspect-[4/5] object-cover group-hover:scale-105 transition-transform duration-500">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-heading font-bold text-gray-dark mb-2">Ahmed Al-Rashid</h3>
+                        <p class="text-primary font-medium mb-3">Chief Executive Officer</p>
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            20+ years of experience in construction management and strategic business development.
+                        </p>
+                    </div>
+
+                    <!-- Team Member 2 -->
+                    <div class="group text-center animate-fade-in-up" style="animation-delay: 0.2s;">
+                        <div class="relative mb-6 overflow-hidden rounded-2xl">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                alt="Mohammed Al-Fahad"
+                                class="w-full aspect-[4/5] object-cover group-hover:scale-105 transition-transform duration-500">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-heading font-bold text-gray-dark mb-2">Mohammed Al-Fahad</h3>
+                        <p class="text-primary font-medium mb-3">Chief Technical Officer</p>
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            Expert in structural engineering and innovative construction technologies.
+                        </p>
+                    </div>
+
+                    <!-- Team Member 3 -->
+                    <div class="group text-center animate-fade-in-up" style="animation-delay: 0.3s;">
+                        <div class="relative mb-6 overflow-hidden rounded-2xl">
+                            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                alt="Khalid Al-Mansour"
+                                class="w-full aspect-[4/5] object-cover group-hover:scale-105 transition-transform duration-500">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-heading font-bold text-gray-dark mb-2">Khalid Al-Mansour</h3>
+                        <p class="text-primary font-medium mb-3">Project Manager</p>
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            Specialized in large-scale project coordination and quality assurance.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+        <!-- Contact Section -->
+    </div>""
+    <section id="contact" class="relative py-20 lg:py-32 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <!-- Section Header -->
+            <div class="mb-16 animate-fade-in-up">
+                <h2 class="text-4xl lg:text-5xl font-heading font-medium text-gray-dark mb-6">
+                    Get in <span class="text-primary">touch with us</span>
+                </h2>
+                <p class="text-lg text-gray-600 max-w-2xl">
+                    We're here to help! Whether you have a question about our services, need assistance with your
+                    account, or want to provide feedback, our team is ready to assist you.
+                </p>
+            </div>
+
+            <!-- Contact Content Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+                <!-- Left Side - Contact Information -->
+                <div class="animate-slide-in-left">
+                    <!-- Contact Details -->
+                    <div class="space-y-8 mb-12">
+                        <!-- Email -->
+                        <div class="group">
+                            <div class="flex items-start space-x-4">
+                                <div
+                                    class="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center group-hover:bg-primary/20 transition-colors duration-300">
+                                    <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                                        </path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-heading font-medium text-gray-dark mb-1">Email</h3>
+                                    <a href="mailto:ENG_ATB@YAHOO.COM"
+                                        class="text-gray-600 hover:text-primary transition-colors duration-300">
+                                        ENG_ATB@YAHOO.COM
+                                    </a>
                                 </div>
                             </div>
+                        </div>
 
-                            <!-- Phone -->
-                            <div class="group">
-                                <div class="flex items-start space-x-4">
-                                    <div
-                                        class="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center group-hover:bg-primary/20 transition-colors duration-300">
-                                        <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor"
-                                            viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z">
-                                            </path>
-                                        </svg>
-                                    </div>
-                                    <div>
-                                        <h3 class="text-lg font-heading font-medium text-gray-dark mb-1">Phone</h3>
-                                        <div class="space-y-1 text-gray-600">
-                                            <div><a href="tel:+966502858515"
-                                                    class="hover:text-primary transition-colors duration-300">+966 50
-                                                    285 8515</a></div>
-                                            <div class="text-sm text-gray-500">Available Monday to Friday, 9 AM - 6 PM
-                                                GMT</div>
-                                        </div>
-                                    </div>
+                        <!-- Phone -->
+                        <div class="group">
+                            <div class="flex items-start space-x-4">
+                                <div
+                                    class="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center group-hover:bg-primary/20 transition-colors duration-300">
+                                    <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z">
+                                        </path>
+                                    </svg>
                                 </div>
-                            </div>
-
-                            <!-- Address -->
-                            <div class="group">
-                                <div class="flex items-start space-x-4">
-                                    <div
-                                        class="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center group-hover:bg-primary/20 transition-colors duration-300">
-                                        <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor"
-                                            viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z">
-                                            </path>
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                        </svg>
-                                    </div>
-                                    <div>
-                                        <h3 class="text-lg font-heading font-medium text-gray-dark mb-1">Address</h3>
-                                        <div class="text-gray-600">
-                                            King Abdullah Branch Rd, King Salman District<br>
-                                            Riyadh 12444, Saudi Arabia
-                                        </div>
+                                <div>
+                                    <h3 class="text-lg font-heading font-medium text-gray-dark mb-1">Phone</h3>
+                                    <div class="space-y-1 text-gray-600">
+                                        <div><a href="tel:+966502858515"
+                                                class="hover:text-primary transition-colors duration-300">+966 50
+                                                285 8515</a></div>
+                                        <div class="text-sm text-gray-500">Available Monday to Friday, 9 AM - 6 PM
+                                            GMT</div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                    </div>
-
-                    <!-- Right Side - Contact Form -->
-                    <div class="animate-slide-in-right">
-                        <form class="space-y-6" action="#" method="POST">
-                            <!-- Name Fields Row -->
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <!-- First Name -->
-                                <div>
-                                    <label for="firstName" class="block text-sm font-medium text-gray-700 mb-2">First
-                                        Name</label>
-                                    <input type="text" id="firstName" name="firstName"
-                                        placeholder="Enter your first name..."
-                                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 bg-white hover:border-gray-400">
+                        <!-- Address -->
+                        <div class="group">
+                            <div class="flex items-start space-x-4">
+                                <div
+                                    class="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center group-hover:bg-primary/20 transition-colors duration-300">
+                                    <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z">
+                                        </path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    </svg>
                                 </div>
-
-                                <!-- Last Name -->
                                 <div>
-                                    <label for="lastName" class="block text-sm font-medium text-gray-700 mb-2">Last
-                                        Name</label>
-                                    <input type="text" id="lastName" name="lastName"
-                                        placeholder="Enter your last name..."
-                                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 bg-white hover:border-gray-400">
+                                    <h3 class="text-lg font-heading font-medium text-gray-dark mb-1">Address</h3>
+                                    <div class="text-gray-600">
+                                        King Abdullah Branch Rd, King Salman District<br>
+                                        Riyadh 12444, Saudi Arabia
+                                    </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
 
-                            <!-- Email -->
+                </div>
+
+                <!-- Right Side - Contact Form -->
+                <div class="animate-slide-in-right">
+                    <form class="space-y-6" action="#" method="POST">
+                        <!-- Name Fields Row -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <!-- First Name -->
                             <div>
-                                <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
-                                <input type="email" id="email" name="email" placeholder="Enter your email address..."
+                                <label for="firstName" class="block text-sm font-medium text-gray-700 mb-2">First
+                                    Name</label>
+                                <input type="text" id="firstName" name="firstName"
+                                    placeholder="Enter your first name..."
                                     class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 bg-white hover:border-gray-400">
                             </div>
 
-                            <!-- Message -->
+                            <!-- Last Name -->
                             <div>
-                                <label for="message" class="block text-sm font-medium text-gray-700 mb-2">How can we
-                                    help you?</label>
-                                <textarea id="message" name="message" rows="6" placeholder="Enter your message..."
-                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 bg-white hover:border-gray-400 resize-none"></textarea>
+                                <label for="lastName" class="block text-sm font-medium text-gray-700 mb-2">Last
+                                    Name</label>
+                                <input type="text" id="lastName" name="lastName" placeholder="Enter your last name..."
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 bg-white hover:border-gray-400">
                             </div>
+                        </div>
 
-                            <!-- Submit Button -->
-                            <div class="flex justify-end">
-                                <button type="submit"
-                                    class="inline-flex items-center px-8 py-3  bg-primary text-white font-medium  hover:bg-gray-800 transition-all duration-300 transform hover:scale-105 group">
-                                    <span>Send Message</span>
-                                    <svg class="ml-2 w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300"
-                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                                    </svg>
-                                </button>
-                            </div>
-                        </form>
-                    </div>
+                        <!-- Email -->
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                            <input type="email" id="email" name="email" placeholder="Enter your email address..."
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 bg-white hover:border-gray-400">
+                        </div>
+
+                        <!-- Message -->
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-2">How can we
+                                help you?</label>
+                            <textarea id="message" name="message" rows="6" placeholder="Enter your message..."
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 bg-white hover:border-gray-400 resize-none"></textarea>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="flex justify-end">
+                            <button type="submit"
+                                class="inline-flex items-center px-8 py-3  bg-primary text-white font-medium  hover:bg-gray-800 transition-all duration-300 transform hover:scale-105 group">
+                                <span>Send Message</span>
+                                <svg class="ml-2 w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300"
+                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
     </div>
 
@@ -2096,6 +2648,59 @@
                 prevSlide();
             } else if (e.key === 'ArrowRight') {
                 nextSlide();
+            }
+        });
+
+        // Services Slick Slider Initialization
+        $(document).ready(function () {
+            console.log('jQuery loaded, initializing Slick Slider...');
+
+            // Check if the container exists
+            if ($('.services-slider-container').length > 0) {
+                console.log('Services container found, initializing slider...');
+
+                $('.services-slider-container').slick({
+                    dots: true,
+                    infinite: true,
+                    speed: 300,
+                    slidesToShow: 4,
+                    slidesToScroll: 1,
+                    autoplay: true,
+                    autoplaySpeed: 4000,
+                    pauseOnHover: true,
+                    arrows: true,
+                    centerMode: false,
+                    variableWidth: false,
+                    responsive: [
+                        {
+                            breakpoint: 1024,
+                            settings: {
+                                slidesToShow: 3,
+                                slidesToScroll: 1,
+                                infinite: true,
+                                dots: true
+                            }
+                        },
+                        {
+                            breakpoint: 600,
+                            settings: {
+                                slidesToShow: 2,
+                                slidesToScroll: 1
+                            }
+                        },
+                        {
+                            breakpoint: 480,
+                            settings: {
+                                slidesToShow: 1,
+                                slidesToScroll: 1
+                            }
+                        }
+                    ]
+                });
+
+                console.log('Slick Slider initialized successfully');
+            } else {
+                console.error('Services slider container not found!');
             }
         });
     </script>
