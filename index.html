@@ -24,6 +24,13 @@
     <!-- Slick Slider JS -->
     <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
+    <!-- Arabic Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&family=Cairo:wght@400;500;700&display=swap"
+        rel="stylesheet">
+
     <!-- Custom Fonts -->
     <style>
         @font-face {
@@ -415,6 +422,15 @@
             animation-delay: 0.5s;
         }
 
+        .mobile-nav-link:nth-child(6) {
+            animation-delay: 0.6s;
+        }
+
+        /* CTA Button Animation */
+        .mt-8 .mobile-nav-link {
+            animation-delay: 0.7s;
+        }
+
         .mobile-nav-link:hover {
             transform: translateX(8px);
         }
@@ -706,7 +722,7 @@
         .services-slider-container .slick-next:hover {
             background-color: #5A86AD;
             border-color: #5A86AD;
-            transform: scale(1.1);
+
         }
 
         .services-slider-container .slick-prev:before,
@@ -751,6 +767,76 @@
 
             width: 12px;
         }
+
+        /* Language Toggle Styles */
+        .language-toggle {
+            position: relative;
+        }
+
+        #language-toggle:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-1px);
+        }
+
+        .header.scrolled #language-toggle {
+            border-color: rgba(90, 134, 173, 0.3);
+            color: #2A2F35;
+        }
+
+        .header.scrolled #language-toggle:hover {
+            background-color: rgba(90, 134, 173, 0.1);
+            color: #5A86AD;
+        }
+
+        /* RTL Support */
+        [dir="rtl"] {
+            text-align: right;
+        }
+
+        [dir="rtl"] .flex {
+            flex-direction: row-reverse;
+        }
+
+        [dir="rtl"] .space-x-6>*+* {
+            margin-left: 0;
+            margin-right: 1.5rem;
+        }
+
+        [dir="rtl"] .space-x-2>*+* {
+            margin-left: 0;
+            margin-right: 0.5rem;
+        }
+
+        [dir="rtl"] .justify-between {
+            flex-direction: row-reverse;
+        }
+
+        [dir="rtl"] .text-left {
+            text-align: right;
+        }
+
+        [dir="rtl"] .text-right {
+            text-align: left;
+        }
+
+        /* Arabic Font Support */
+        [dir="rtl"] body {
+            font-family: 'Tajawal', 'Cairo', 'Amiri', Arial, sans-serif;
+        }
+
+        [dir="rtl"] .font-heading {
+            font-family: 'Tajawal', 'Cairo', 'Amiri', Arial, sans-serif;
+        }
+
+        /* Language transition */
+        .lang-transition {
+            transition: all 0.3s ease;
+        }
+
+        /* Hidden class for language switching */
+        .lang-hidden {
+            display: none;
+        }
     </style>
 </head>
 
@@ -765,14 +851,39 @@
                 </a>
 
                 <!-- Desktop Navigation -->
-                <nav class="hidden md:flex items-center space-x-6">
-                    <a href="#home" class="nav-link text-sm font-medium uppercase tracking-wider">HOME</a>
-                    <a href="#about" class="nav-link text-sm font-medium uppercase tracking-wider">ABOUT</a>
-                    <a href="#services" class="nav-link text-sm font-medium uppercase tracking-wider">SERVICES</a>
-                    <a href="#projects" class="nav-link text-sm font-medium uppercase tracking-wider">PROJECTS</a>
-                    <a href="#team" class="nav-link text-sm font-medium uppercase tracking-wider">TEAM</a>
-                    <a href="#contact" class="nav-link text-sm font-medium uppercase tracking-wider">CONTACT</a>
-                </nav>
+                <div class="hidden md:flex items-center space-x-6">
+                    <nav class="flex items-center space-x-6">
+                        <a href="#home" class="nav-link text-sm font-medium uppercase tracking-wider"
+                            data-translate="HOME">HOME</a>
+                        <a href="#about" class="nav-link text-sm font-medium uppercase tracking-wider"
+                            data-translate="ABOUT">ABOUT</a>
+                        <a href="#why-choose-us" class="nav-link text-sm font-medium uppercase tracking-wider"
+                            data-translate="WHY CHOOSE US">WHY
+                            CHOOSE
+                            US</a>
+                        <a href="#services" class="nav-link text-sm font-medium uppercase tracking-wider"
+                            data-translate="SERVICES">SERVICES</a>
+                        <a href="#projects" class="nav-link text-sm font-medium uppercase tracking-wider"
+                            data-translate="PROJECTS">PROJECTS</a>
+                    </nav>
+
+                    <!-- Language Toggle Button -->
+                    <button id="language-toggle"
+                        class="flex items-center space-x-2 px-3 py-2 rounded-lg border border-white/20 hover:bg-white/10 transition-all duration-300 text-white hover:text-white">
+                        <span class="text-sm font-medium" id="current-lang">EN</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129">
+                            </path>
+                        </svg>
+                    </button>
+
+                    <!-- CTA Button -->
+                    <a href="#contact"
+                        class="bg-primary hover:bg-primary-hover text-white px-6 py-2 rounded-lg text-sm font-medium uppercase tracking-wider transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                        data-translate="CONTACT US">CONTACT
+                        US</a>
+                </div>
 
                 <!-- Mobile Menu Button -->
                 <button id="mobile-menu-button"
@@ -801,18 +912,37 @@
                 <!-- Navigation Links -->
                 <nav class="flex-1 flex flex-col justify-center space-y-6 w-full">
                     <a href="#home"
-                        class="mobile-nav-link text-lg font-heading font-medium text-gray-dark hover:text-primary transition-colors py-3 px-4 rounded-lg hover:bg-gray-50 border-b border-gray-100">HOME</a>
+                        class="mobile-nav-link text-lg font-heading font-medium text-gray-dark hover:text-primary transition-colors py-3 px-4 rounded-lg hover:bg-gray-50 border-b border-gray-100"
+                        data-translate="HOME">HOME</a>
                     <a href="#about"
-                        class="mobile-nav-link text-lg font-heading font-medium text-gray-dark hover:text-primary transition-colors py-3 px-4 rounded-lg hover:bg-gray-50 border-b border-gray-100">ABOUT</a>
+                        class="mobile-nav-link text-lg font-heading font-medium text-gray-dark hover:text-primary transition-colors py-3 px-4 rounded-lg hover:bg-gray-50 border-b border-gray-100"
+                        data-translate="ABOUT">ABOUT</a>
+                    <a href="#why-choose-us"
+                        class="mobile-nav-link text-lg font-heading font-medium text-gray-dark hover:text-primary transition-colors py-3 px-4 rounded-lg hover:bg-gray-50 border-b border-gray-100"
+                        data-translate="WHY CHOOSE US">WHY
+                        CHOOSE US</a>
                     <a href="#services"
-                        class="mobile-nav-link text-lg font-heading font-medium text-gray-dark hover:text-primary transition-colors py-3 px-4 rounded-lg hover:bg-gray-50 border-b border-gray-100">SERVICES</a>
+                        class="mobile-nav-link text-lg font-heading font-medium text-gray-dark hover:text-primary transition-colors py-3 px-4 rounded-lg hover:bg-gray-50 border-b border-gray-100"
+                        data-translate="SERVICES">SERVICES</a>
                     <a href="#projects"
-                        class="mobile-nav-link text-lg font-heading font-medium text-gray-dark hover:text-primary transition-colors py-3 px-4 rounded-lg hover:bg-gray-50 border-b border-gray-100">PROJECTS</a>
-                    <a href="#team"
-                        class="mobile-nav-link text-lg font-heading font-medium text-gray-dark hover:text-primary transition-colors py-3 px-4 rounded-lg hover:bg-gray-50 border-b border-gray-100">TEAM</a>
-                    <a href="#contact"
-                        class="mobile-nav-link text-lg font-heading font-medium text-gray-dark hover:text-primary transition-colors py-3 px-4 rounded-lg hover:bg-gray-50 border-b border-gray-100">CONTACT</a>
+                        class="mobile-nav-link text-lg font-heading font-medium text-gray-dark hover:text-primary transition-colors py-3 px-4 rounded-lg hover:bg-gray-50 border-b border-gray-100"
+                        data-translate="PROJECTS">PROJECTS</a>
+
+                    <!-- Mobile Language Toggle -->
+                    <button id="mobile-language-toggle"
+                        class="mobile-nav-link flex items-center justify-between text-lg font-heading font-medium text-gray-dark hover:text-primary transition-colors py-3 px-4 rounded-lg hover:bg-gray-50 border-b border-gray-100">
+                        <span data-translate="Language">Language</span>
+                        <span id="mobile-current-lang" class="text-primary font-bold">EN</span>
+                    </button>
                 </nav>
+
+                <!-- CTA Button -->
+                <div class="mt-8 px-4">
+                    <a href="#contact"
+                        class="mobile-nav-link w-full bg-primary hover:bg-primary-hover text-white text-center py-4 px-6 rounded-lg text-lg font-heading font-medium uppercase tracking-wider transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl block"
+                        data-translate="CONTACT US">CONTACT
+                        US</a>
+                </div>
 
                 <!-- Footer -->
                 <div class="text-center pt-6 border-t border-gray-200">
@@ -828,11 +958,17 @@
 
         <!-- Hero Section -->
         <section id="home" class="relative w-full h-screen hero-bg section-lines overflow-hidden">
-            <!-- Background Video -->
-            <video class="absolute inset-0 w-full h-full object-cover" autoplay muted loop playsinline preload="auto"
-                poster="assets/img/home-landing.jpg">
+            <!-- Background Videos for Smooth Transitions -->
+            <video id="hero-video-1"
+                class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out"
+                autoplay muted playsinline preload="auto" poster="assets/img/hero.jpeg">
+                <source src="assets/video/hero3.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <video id="hero-video-2"
+                class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out opacity-0"
+                muted playsinline preload="auto">
                 <source src="assets/video/hero4.mp4" type="video/mp4">
-                <!-- Fallback text -->
                 Your browser does not support the video tag.
             </video>
             <div class="absolute inset-0 flex items-end">
@@ -841,13 +977,18 @@
                         <div class="relative z-10">
                             <div class="mb-4">
                                 <div class="text-xs font-bold uppercase tracking-widest text-white opacity-50 mb-3 stagger-animation"
-                                    style="animation-delay: 0.2s;">Established 2020</div>
+                                    style="animation-delay: 0.2s;" data-translate="Established 2020">Established 2020
+                                </div>
                                 <h1 class="text-xl md:text-3xl font-heading font-medium text-white leading-tight stagger-animation"
-                                    style="animation-delay: 0.4s;">AL ATHEL ESTABLISHMENT is a comprehensive
+                                    style="animation-delay: 0.4s;"
+                                    data-translate="AL ATHEL ESTABLISHMENT is a comprehensive construction management team and general contractor.">
+                                    AL ATHEL ESTABLISHMENT is a comprehensive
                                     construction management team and general contractor.</h1>
                             </div>
                             <p class="text-sm md:text-base text-white opacity-60 leading-relaxed stagger-animation"
-                                style="animation-delay: 0.6s;">We deliver residential, commercial, and infrastructure
+                                style="animation-delay: 0.6s;"
+                                data-translate="We deliver residential, commercial, and infrastructure projects with safety, sustainability, and on-time delivery—our ingredients for construction excellence.">
+                                We deliver residential, commercial, and infrastructure
                                 projects with safety, sustainability, and on-time delivery—our ingredients for
                                 construction excellence.</p>
                         </div>
@@ -856,7 +997,8 @@
                     <div class="hidden md:block md:w-1/5 bg-white hero-content" style="animation-delay: 0.8s;">
                         <button
                             class="w-full h-full py-12 text-primary font-bold text-sm hover:bg-primary hover:text-white transition-all duration-300 transform hover:scale-105">
-                            <div class="text-center floating">Scroll to discover</div>
+                            <div class="text-center floating" data-translate="Scroll to discover">Scroll to discover
+                            </div>
                         </button>
                     </div>
                 </div>
@@ -881,9 +1023,11 @@
             <div class="max-w-7xl mx-auto px-6 lg:px-8 relative">
                 <!-- Section Header -->
                 <div class="text-center mb-16 animate-fade-in-up">
-                    <span class="text-primary text-sm font-bold uppercase tracking-widest mb-4 block">OUR STORY</span>
+                    <span class="text-primary text-sm font-bold uppercase tracking-widest mb-4 block"
+                        data-translate="OUR STORY">OUR STORY</span>
                     <h2 class="text-4xl lg:text-6xl font-heading font-medium text-gray-dark mb-6">
-                        Ours is a labor of <span class="text-primary ">love</span>
+                        <span data-translate="Ours is a labor of">Ours is a labor of</span> <span class="text-primary"
+                            data-translate="love">love</span>
                     </h2>
                 </div>
 
@@ -1008,8 +1152,10 @@
             <div class="max-w-7xl mx-auto px-6 lg:px-8">
                 <!-- Section Header -->
                 <div class="text-center mb-16 animate-fade-in-up">
-                    <span class="text-primary text-sm font-bold uppercase tracking-widest mb-4 block">WHY CHOOSE
+                    <span class="english text-primary text-sm font-bold uppercase tracking-widest mb-4 block">WHY CHOOSE
                         US</span>
+                    <span class="arabic text-primary text-sm font-bold uppercase tracking-widest mb-4 block">
+                        ليش تختارنا</span>
                     <h2 class="text-4xl lg:text-6xl font-heading font-medium text-gray-dark mb-6">
                         Your trusted <span class="text-primary">construction</span> partner
                     </h2>
@@ -1194,8 +1340,7 @@
                         <div
                             class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 mx-2">
                             <div class="aspect-[4/3] overflow-hidden relative">
-                                <img src="https://images.unsplash.com/photo-1590736969955-71cc94901144?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                                    alt="Civil Works"
+                                <img src="assets/img/civil.webp" alt="Civil Works"
                                     class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                                 <div
                                     class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -1312,8 +1457,7 @@
                         <div
                             class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 mx-2">
                             <div class="aspect-[4/3] overflow-hidden relative">
-                                <img src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                                    alt="IT Solutions"
+                                <img src="assets/img/it-infrastructures.jpg" alt="IT Solutions"
                                     class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                                 <div
                                     class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -1341,7 +1485,7 @@
                         <div
                             class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 mx-2">
                             <div class="aspect-[4/3] overflow-hidden relative">
-                                <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                <img src="assets/img/lehbi/WhatsApp Image 2025-10-02 at 19.42.25 (2).jpeg"
                                     alt="Finishing Works"
                                     class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                                 <div
@@ -1428,13 +1572,82 @@
                     <div class="project-slider-wrapper overflow-hidden rounded-2xl shadow-2xl">
                         <div class="project-slider flex transition-transform duration-500 ease-in-out"
                             id="projectSlider">
+                            <!-- Slide 6 -->
+                            <div class="project-slide min-w-full flex flex-col lg:flex-row bg-white">
+                                <!-- Image Section (60% on desktop) -->
+                                <div class="w-full lg:w-3/5 relative">
+                                    <div class="aspect-[16/10] lg:aspect-[4/3] overflow-hidden">
+                                        <img src="assets/img/lehbi/1.jpeg" alt="Lehbi Renal Care Morsalat Branch"
+                                            class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+                                    </div>
+                                </div>
+
+                                <!-- Content Section (40% on desktop) -->
+                                <div class="w-full lg:w-2/5 p-8 lg:p-12 flex flex-col justify-center relative">
+                                    <div class="space-y-6">
+                                        <span
+                                            class="inline-block text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 px-4 py-2 rounded-full">Healthcare</span>
+
+                                        <div>
+                                            <h3
+                                                class="text-2xl lg:text-3xl font-heading font-bold text-gray-dark mb-3 leading-tight">
+                                                Lehbi Renal Care Morsalat Branch</h3>
+                                            <p class="text-lg text-gray-600 mb-4 font-medium">Lehbi Medical Group</p>
+                                            <p class="text-base text-gray-600 leading-relaxed line-height-1.6">
+                                                State-of-the-art renal care center with specialized dialysis facilities
+                                                and modern medical equipment.</p>
+                                        </div>
+
+                                        <div class="flex items-center space-x-6 text-sm text-gray-600">
+                                            <div class="flex items-center">
+                                                <div class="w-2 h-2 bg-accent-green rounded-full mr-2"></div>
+                                                <span>12 treatment rooms</span>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <div class="w-2 h-2 bg-primary rounded-full mr-2"></div>
+                                                <span>500+ monthly patients</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Controls positioned at bottom-right -->
+                                    <div class="absolute bottom-8 right-8 flex items-center space-x-3">
+                                        <button
+                                            class="prev-btn w-12 h-12 bg-white hover:bg-gray-50 text-primary border border-gray-200 rounded-full shadow-lg transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50"
+                                            aria-label="Previous project">
+                                            <svg class="w-5 h-5 mx-auto" fill="none" stroke="currentColor"
+                                                viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M15 19l-7-7 7-7"></path>
+                                            </svg>
+                                        </button>
+                                        <button
+                                            class="next-btn w-12 h-12 bg-white hover:bg-gray-50 text-primary border border-gray-200 rounded-full shadow-lg transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50"
+                                            aria-label="Next project">
+                                            <svg class="w-5 h-5 mx-auto" fill="none" stroke="currentColor"
+                                                viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M9 5l7 7-7 7"></path>
+                                            </svg>
+                                        </button>
+                                        <a href="#contact"
+                                            class="inline-flex items-center px-6 py-3 bg-primary text-white font-medium rounded-lg hover:bg-primary-hover transition-all duration-300 transform hover:scale-105 shadow-lg focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50">
+                                            <span>Start Your Project</span>
+                                            <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor"
+                                                viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
                             <!-- Slide 1 -->
                             <div class="project-slide min-w-full flex flex-col lg:flex-row bg-white">
                                 <!-- Image Section (60% on desktop) -->
                                 <div class="w-full lg:w-3/5 relative">
                                     <div class="aspect-[16/10] lg:aspect-[4/3] overflow-hidden">
-                                        <img src="https://images.unsplash.com/photo-1565008447742-97f6f38c985c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
-                                            alt="Alissa Factory Hunt Air"
+                                        <img src="assets/img/alessa.gif" alt="Alissa Factory Hunt Air"
                                             class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
                                     </div>
                                 </div>
@@ -1500,6 +1713,7 @@
                                     </div>
                                 </div>
                             </div>
+
 
                             <!-- Slide 2 -->
                             <div class="project-slide min-w-full flex flex-col lg:flex-row bg-white">
@@ -1799,7 +2013,7 @@
                                 <!-- Image Section (60% on desktop) -->
                                 <div class="w-full lg:w-3/5 relative">
                                     <div class="aspect-[16/10] lg:aspect-[4/3] overflow-hidden">
-                                        <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+                                        <img src="assets/img/lehbi/WhatsApp Image 2025-10-02 at 19.42.24 (2).jpeg"
                                             alt="Lehbi Renal Care Morsalat Branch"
                                             class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
                                     </div>
@@ -1871,7 +2085,7 @@
                                 <!-- Image Section (60% on desktop) -->
                                 <div class="w-full lg:w-3/5 relative">
                                     <div class="aspect-[16/10] lg:aspect-[4/3] overflow-hidden">
-                                        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+                                        <img src="assets/img/lehbi/WhatsApp Image 2025-10-02 at 19.42.24.jpeg"
                                             alt="Lehbi Renal Care Shefa Branch"
                                             class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
                                     </div>
@@ -2101,81 +2315,12 @@
             </div>
         </section>
 
-        <!-- Team Section -->
-        <section id="team" class="relative py-20 lg:py-32 bg-white overflow-hidden">
-            <div class="max-w-7xl mx-auto px-6 lg:px-8">
-                <!-- Section Header -->
-                <div class="text-center mb-16 animate-fade-in-up">
-                    <span class="text-primary text-sm font-bold uppercase tracking-widest mb-4 block">OUR TEAM</span>
-                    <h2 class="text-4xl lg:text-6xl font-heading font-medium text-gray-dark mb-6">
-                        Meet the <span class="text-primary">experts</span> behind our success
-                    </h2>
-                    <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                        Our experienced team of professionals brings decades of combined expertise to every project.
-                    </p>
-                </div>
-
-                <!-- Team Grid -->
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Team Member 1 -->
-                    <div class="group text-center animate-fade-in-up" style="animation-delay: 0.1s;">
-                        <div class="relative mb-6 overflow-hidden rounded-2xl">
-                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                                alt="Ahmed Al-Rashid"
-                                class="w-full aspect-[4/5] object-cover group-hover:scale-105 transition-transform duration-500">
-                            <div
-                                class="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            </div>
-                        </div>
-                        <h3 class="text-xl font-heading font-bold text-gray-dark mb-2">Ahmed Al-Rashid</h3>
-                        <p class="text-primary font-medium mb-3">Chief Executive Officer</p>
-                        <p class="text-gray-600 text-sm leading-relaxed">
-                            20+ years of experience in construction management and strategic business development.
-                        </p>
-                    </div>
-
-                    <!-- Team Member 2 -->
-                    <div class="group text-center animate-fade-in-up" style="animation-delay: 0.2s;">
-                        <div class="relative mb-6 overflow-hidden rounded-2xl">
-                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                                alt="Mohammed Al-Fahad"
-                                class="w-full aspect-[4/5] object-cover group-hover:scale-105 transition-transform duration-500">
-                            <div
-                                class="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            </div>
-                        </div>
-                        <h3 class="text-xl font-heading font-bold text-gray-dark mb-2">Mohammed Al-Fahad</h3>
-                        <p class="text-primary font-medium mb-3">Chief Technical Officer</p>
-                        <p class="text-gray-600 text-sm leading-relaxed">
-                            Expert in structural engineering and innovative construction technologies.
-                        </p>
-                    </div>
-
-                    <!-- Team Member 3 -->
-                    <div class="group text-center animate-fade-in-up" style="animation-delay: 0.3s;">
-                        <div class="relative mb-6 overflow-hidden rounded-2xl">
-                            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                                alt="Khalid Al-Mansour"
-                                class="w-full aspect-[4/5] object-cover group-hover:scale-105 transition-transform duration-500">
-                            <div
-                                class="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            </div>
-                        </div>
-                        <h3 class="text-xl font-heading font-bold text-gray-dark mb-2">Khalid Al-Mansour</h3>
-                        <p class="text-primary font-medium mb-3">Project Manager</p>
-                        <p class="text-gray-600 text-sm leading-relaxed">
-                            Specialized in large-scale project coordination and quality assurance.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
 
 
 
 
         <!-- Contact Section -->
-    </div>""
+    </div>
     <section id="contact" class="relative py-20 lg:py-32 bg-gray-50">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <!-- Section Header -->
@@ -2339,7 +2484,8 @@
 
                 <!-- Copyright Center -->
                 <div class="text-center mb-8 md:mb-0">
-                    <div class="text-sm text-gray-medium mb-2">© 2024 AL ATHEL ESTABLISHMENT. All rights reserved.</div>
+                    <div class="text-sm text-gray-medium mb-2">© <span id="current-year">2024</span> AL ATHEL
+                        ESTABLISHMENT. All rights reserved.</div>
 
                 </div>
 
@@ -2703,6 +2849,256 @@
                 console.error('Services slider container not found!');
             }
         });
+
+        // Smooth Hero Video Sequence Functionality
+        const heroVideo1 = document.getElementById('hero-video-1');
+        const heroVideo2 = document.getElementById('hero-video-2');
+        const videoSequence = [
+            'assets/video/hero3.mp4',
+            'assets/video/hero4.mp4',
+            'assets/video/hero1.mp4'
+        ];
+
+        let currentVideoIndex = 0;
+        let activeVideo = heroVideo1;
+        let nextVideo = heroVideo2;
+        let isTransitioning = false;
+
+        function preloadNextVideo() {
+            const nextIndex = (currentVideoIndex + 1) % videoSequence.length;
+            const nextVideoSrc = videoSequence[nextIndex];
+
+            // Preload the next video
+            nextVideo.src = nextVideoSrc;
+            nextVideo.load();
+        }
+
+        function crossfadeToNextVideo() {
+            if (isTransitioning) return;
+            isTransitioning = true;
+
+            // Start playing the next video
+            nextVideo.play().then(() => {
+                // Crossfade: fade out current, fade in next
+                activeVideo.style.opacity = '0';
+                nextVideo.style.opacity = '1';
+
+                // After transition completes, swap the videos
+                setTimeout(() => {
+                    // Swap active and next video references
+                    const temp = activeVideo;
+                    activeVideo = nextVideo;
+                    nextVideo = temp;
+
+                    // Update video index
+                    currentVideoIndex = (currentVideoIndex + 1) % videoSequence.length;
+
+                    // Preload the next video for seamless transitions
+                    preloadNextVideo();
+
+                    isTransitioning = false;
+                }, 1000); // Match the CSS transition duration
+
+            }).catch(error => {
+                console.log('Next video play failed:', error);
+                isTransitioning = false;
+            });
+        }
+
+        // Initialize video sequence
+        if (heroVideo1 && heroVideo2) {
+            // Preload the second video
+            preloadNextVideo();
+
+            // Set up event listeners for both videos
+            [heroVideo1, heroVideo2].forEach(video => {
+                video.addEventListener('ended', crossfadeToNextVideo);
+
+                video.addEventListener('error', function (e) {
+                    console.log('Video error:', e);
+                    if (!isTransitioning) {
+                        crossfadeToNextVideo();
+                    }
+                });
+            });
+
+            // Ensure first video starts playing
+            heroVideo1.play().catch(error => {
+                console.log('Initial video play failed:', error);
+            });
+
+            console.log('Smooth video sequence initialized');
+        }
+    </script>
+
+    <!-- Dynamic Year Script -->
+    <script>
+        // Update copyright year dynamically
+        document.addEventListener('DOMContentLoaded', function () {
+            const currentYear = new Date().getFullYear();
+            const yearElement = document.getElementById('current-year');
+            if (yearElement) {
+                yearElement.textContent = currentYear;
+            }
+        });
+    </script>
+
+    <!-- Language Switching Script -->
+    <script>
+        // Language translations
+        const translations = {
+            en: {
+                // Navigation
+                'HOME': 'HOME',
+                'ABOUT': 'ABOUT',
+                'WHY CHOOSE US': 'WHY CHOOSE US',
+                'SERVICES': 'SERVICES',
+                'PROJECTS': 'PROJECTS',
+                'CONTACT US': 'CONTACT US',
+                'Language': 'Language',
+
+                // Hero Section
+                'Established 2020': 'Established 2020',
+                'AL ATHEL ESTABLISHMENT is a comprehensive construction management team and general contractor.': 'AL ATHEL ESTABLISHMENT is a comprehensive construction management team and general contractor.',
+                'We deliver residential, commercial, and infrastructure projects with safety, sustainability, and on-time delivery—our ingredients for construction excellence.': 'We deliver residential, commercial, and infrastructure projects with safety, sustainability, and on-time delivery—our ingredients for construction excellence.',
+                'Scroll to discover': 'Scroll to discover',
+
+                // About Section
+                'OUR STORY': 'OUR STORY',
+                'Ours is a labor of': 'Ours is a labor of',
+                'love': 'love',
+
+                // Company Name
+                'AL ATHEL ESTABLISHMENT': 'AL ATHEL ESTABLISHMENT'
+            },
+            ar: {
+                // Navigation
+                'HOME': 'الرئيسية',
+                'ABOUT': 'من نحن',
+                'WHY CHOOSE US': 'لماذا تختارنا',
+                'SERVICES': 'الخدمات',
+                'PROJECTS': 'المشاريع',
+                'CONTACT US': 'اتصل بنا',
+                'Language': 'اللغة',
+
+                // Hero Section
+                'Established 2020': 'تأسست عام ٢٠٢٠',
+                'AL ATHEL ESTABLISHMENT is a comprehensive construction management team and general contractor.': 'مؤسسة الأثل هي فريق شامل لإدارة البناء ومقاول عام متخصص.',
+                'We deliver residential, commercial, and infrastructure projects with safety, sustainability, and on-time delivery—our ingredients for construction excellence.': 'نقوم بتنفيذ المشاريع السكنية والتجارية والبنية التحتية بأمان واستدامة وتسليم في الوقت المحدد - مكوناتنا للتميز في البناء.',
+                'Scroll to discover': 'اسحب للاستكشاف',
+
+                // About Section
+                'OUR STORY': 'قصتنا',
+                'Ours is a labor of': 'عملنا هو عمل مليء بـ',
+                'love': 'الحب',
+
+                // Company Name
+                'AL ATHEL ESTABLISHMENT': 'مؤسسة الأثل'
+            }
+        };
+
+        let currentLanguage = 'en';
+
+        function switchLanguage() {
+            currentLanguage = currentLanguage === 'en' ? 'ar' : 'en';
+
+            // Update HTML direction
+            document.documentElement.dir = currentLanguage === 'ar' ? 'rtl' : 'ltr';
+            document.documentElement.lang = currentLanguage;
+
+            // Update language indicators
+            document.getElementById('current-lang').textContent = currentLanguage.toUpperCase();
+            document.getElementById('mobile-current-lang').textContent = currentLanguage.toUpperCase();
+
+            // Update all translatable elements
+            updateTranslations();
+
+            // Save language preference
+            localStorage.setItem('preferred-language', currentLanguage);
+        }
+
+        function updateTranslations() {
+            const elements = document.querySelectorAll('[data-translate]');
+            elements.forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (translations[currentLanguage] && translations[currentLanguage][key]) {
+                    element.textContent = translations[currentLanguage][key];
+                }
+            });
+        }
+
+        // Initialize language system
+        document.addEventListener('DOMContentLoaded', function () {
+            // Load saved language preference
+            const savedLanguage = localStorage.getItem('preferred-language');
+            if (savedLanguage && savedLanguage !== currentLanguage) {
+                currentLanguage = savedLanguage;
+                switchLanguage();
+            }
+
+            // Add event listeners
+            document.getElementById('language-toggle').addEventListener('click', switchLanguage);
+            document.getElementById('mobile-language-toggle').addEventListener('click', switchLanguage);
+
+            // Add data-translate attributes to existing elements
+            addTranslateAttributes();
+        });
+
+        function addTranslateAttributes() {
+            // Navigation links
+            const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-link');
+            navLinks.forEach(link => {
+                const text = link.textContent.trim();
+                if (translations.en[text]) {
+                    link.setAttribute('data-translate', text);
+                }
+            });
+
+            // Contact button
+            const contactBtns = document.querySelectorAll('a[href="#contact"]');
+            contactBtns.forEach(btn => {
+                if (btn.textContent.includes('CONTACT')) {
+                    btn.setAttribute('data-translate', 'CONTACT US');
+                }
+            });
+
+            // Hero section elements
+            const establishedText = document.querySelector('.text-xs.font-bold.uppercase.tracking-widest.text-white.opacity-50');
+            if (establishedText && establishedText.textContent.includes('Established')) {
+                establishedText.setAttribute('data-translate', 'Established 2020');
+            }
+
+            const heroTitle = document.querySelector('h1.text-xl.md\\:text-3xl');
+            if (heroTitle) {
+                heroTitle.setAttribute('data-translate', 'AL ATHEL ESTABLISHMENT is a comprehensive construction management team and general contractor.');
+            }
+
+            const heroDescription = document.querySelector('.text-sm.md\\:text-base.text-white.opacity-60');
+            if (heroDescription) {
+                heroDescription.setAttribute('data-translate', 'We deliver residential, commercial, and infrastructure projects with safety, sustainability, and on-time delivery—our ingredients for construction excellence.');
+            }
+
+            const scrollText = document.querySelector('.floating');
+            if (scrollText && scrollText.textContent.includes('Scroll')) {
+                scrollText.setAttribute('data-translate', 'Scroll to discover');
+            }
+
+            // About section
+            const ourStorySpan = document.querySelector('span.text-primary.text-sm.font-bold.uppercase.tracking-widest');
+            if (ourStorySpan && ourStorySpan.textContent.includes('OUR STORY')) {
+                ourStorySpan.setAttribute('data-translate', 'OUR STORY');
+            }
+
+            const laborText = document.querySelector('h2.text-4xl.lg\\:text-6xl .text-gray-dark');
+            if (laborText && laborText.textContent.includes('Ours is a labor of')) {
+                laborText.setAttribute('data-translate', 'Ours is a labor of');
+            }
+
+            const loveText = document.querySelector('h2.text-4xl.lg\\:text-6xl .text-primary');
+            if (loveText && loveText.textContent.includes('love')) {
+                loveText.setAttribute('data-translate', 'love');
+            }
+        }
     </script>
 </body>
 
