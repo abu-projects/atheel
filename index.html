@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="ar" dir="rtl">
 
 <head>
     <meta charset="utf-8">
@@ -94,6 +94,16 @@
     </script>
 
     <style>
+    
+        @layer utilities {
+  .dir-\[ltr\] {
+    direction: ltr;
+  }
+  .dir-\[rtl\] {
+    direction: rtl;
+  }
+}
+
         .hero-bg {
             background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)),
                 url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
@@ -787,8 +797,13 @@
             background-color: rgba(90, 134, 173, 0.1);
             color: #5A86AD;
         }
-
+  [dir="ltr"] .arabic {
+          display: none;
+        }
         /* RTL Support */
+         [dir="rtl"] .english {
+          display: none;
+        }
         [dir="rtl"] {
             text-align: right;
         }
@@ -819,6 +834,65 @@
             text-align: left;
         }
 
+        /* RTL Logo positioning */
+        [dir="rtl"] .header .flex.items-center.justify-between {
+            flex-direction: row-reverse;
+        }
+
+        [dir="rtl"] .header .logo-animation {
+            order: 2;
+        }
+
+        [dir="rtl"] .header nav {
+            order: 1;
+        }
+
+        /* RTL Mobile menu button positioning */
+        [dir="rtl"] #mobile-menu-button {
+            order: 1;
+        }
+
+        /* RTL Navigation spacing adjustments */
+        [dir="rtl"] .header .space-x-6 {
+            flex-direction: row-reverse;
+        }
+
+        /* Override for Arabic navigation - use normal row direction */
+        [dir="rtl"] .header .arabic .space-x-6 {
+            flex-direction: row;
+        }
+
+        [dir="rtl"] .header .space-x-6>*+* {
+            margin-left: 0;
+            margin-right: 1.5rem;
+        }
+
+        [dir="rtl"] .header .space-x-2>*+* {
+            margin-left: 0;
+            margin-right: 0.5rem;
+        }
+
+        /* Specific RTL navigation order for Arabic */
+        [dir="rtl"] .arabic nav.flex {
+            flex-direction: row;
+        }
+
+        /* RTL Arabic navigation spacing - ensure all items including الرئيسية have proper spacing */
+        [dir="rtl"] .arabic nav .space-x-6 > * + * {
+            margin-left: 0;
+            margin-right: 1.5rem;
+        }
+
+        /* Ensure first navigation item (الرئيسية) also has proper spacing */
+        [dir="rtl"] .arabic nav .space-x-6 > *:first-child {
+            margin-right: 1.5rem;
+        }
+
+        /* Ensure proper text alignment for Arabic navigation */
+        [dir="rtl"] .arabic .nav-link {
+            text-align: right;
+        }
+
         /* Arabic Font Support */
         [dir="rtl"] body {
             font-family: 'Tajawal', 'Cairo', 'Amiri', Arial, sans-serif;
@@ -837,10 +911,29 @@
         .lang-hidden {
             display: none;
         }
+
+        /* Fix horizontal overflow */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            max-width: 100vw;
+            overflow-x: hidden;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        #page-container {
+            width: 100%;
+            max-width: 100vw;
+            overflow-x: hidden;
+        }
     </style>
 </head>
 
-<body class="font-body text-gray-900 overflow-x-hidden bg-[#f0f4f7]">
+<body class="font-body text-gray-900 overflow-x-hidden bg-[#f0f4f7]" style="margin: 0; padding: 0; width: 100%; max-width: 100vw;">
     <!-- Header -->
     <header id="header" class="header fixed top-0 left-0 w-full z-50 py-4">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
@@ -851,7 +944,7 @@
                 </a>
 
                 <!-- Desktop Navigation -->
-                <div class="hidden md:flex items-center space-x-6">
+                <div class="english  hidden md:flex items-center space-x-6">
                     <nav class="flex items-center space-x-6">
                         <a href="#home" class="nav-link text-sm font-medium uppercase tracking-wider"
                             data-translate="HOME">HOME</a>
@@ -867,6 +960,13 @@
                             data-translate="PROJECTS">PROJECTS</a>
                     </nav>
 
+
+                    <!-- CTA Button -->
+                    <a href="#contact"
+                        class="bg-primary hover:bg-primary-hover text-white px-6 py-2 rounded-lg text-sm font-medium uppercase tracking-wider transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                        data-translate="CONTACT US">CONTACT
+                        US</a>
+
                     <!-- Language Toggle Button -->
                     <button id="language-toggle"
                         class="flex items-center space-x-2 px-3 py-2 rounded-lg border border-white/20 hover:bg-white/10 transition-all duration-300 text-white hover:text-white">
@@ -877,12 +977,38 @@
                             </path>
                         </svg>
                     </button>
+                </div>
 
-                    <!-- CTA Button -->
+                <!-- Desktop Navigation (Arabic) -->
+                <div class="arabic hidden md:flex items-center space-x-6 space-x-reverse">
+                    <nav class="flex items-center space-x-6 space-x-reverse" >
+                                                <a href="#home-ar" class="nav-link text-sm font-medium uppercase tracking-wider">الرئيسية</a>
+                        <a href="#about-ar" class="nav-link text-sm font-medium uppercase tracking-wider">من نحن</a>
+       <a href="#why-choose-us-ar" class="nav-link text-sm font-medium uppercase tracking-wider">لماذا
+                            تختارنا</a>
+                        <a href="#services-ar" class="nav-link text-sm font-medium uppercase tracking-wider">الخدمات</a>
+
+
+                        <a href="#projects-ar"
+                            class="nav-link text-sm font-medium uppercase tracking-wider">المشاريع</a>
+                 
+                    </nav>
+
+                    <!-- Language Toggle Button (duplicate for Arabic) -->
+                    <button id="language-toggle-2"
+                        class="flex items-center space-x-2 px-3 py-2 rounded-lg border border-white/20 hover:bg-white/10 transition-all duration-300 text-white hover:text-white">
+                        <span class="text-sm font-medium" id="current-lang-2">EN</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129">
+                            </path>
+                        </svg>
+                    </button>
+
+                    <!-- CTA Button (Arabic) -->
                     <a href="#contact"
-                        class="bg-primary hover:bg-primary-hover text-white px-6 py-2 rounded-lg text-sm font-medium uppercase tracking-wider transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
-                        data-translate="CONTACT US">CONTACT
-                        US</a>
+                        class="bg-primary hover:bg-primary-hover text-white px-6 py-2 rounded-lg text-sm font-medium uppercase tracking-wider transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">اتصل
+                        بنا</a>
                 </div>
 
                 <!-- Mobile Menu Button -->
@@ -895,9 +1021,9 @@
             </div>
         </div>
 
-        <!-- Mobile Navigation -->
+        <!-- Mobile Navigation (English) -->
         <div id="mobile-menu"
-            class="md:hidden fixed inset-0 w-full h-full bg-white transform translate-x-full transition-transform duration-300 ease-in-out z-40">
+            class="english md:hidden fixed inset-0 w-full h-full bg-white transform translate-x-full transition-transform duration-300 ease-in-out z-40">
             <!-- Close Button -->
             <button id="mobile-menu-close"
                 class="absolute top-6 right-6 w-10 h-10 flex items-center justify-center bg-gray-100 rounded-full hover:bg-gray-200 transition-colors">
@@ -951,13 +1077,65 @@
                 </div>
             </div>
         </div>
+
+        <!-- Mobile Navigation (Arabic) -->
+        <div id="mobile-menu-ar" lang="ar" dir="rtl"
+            class="arabic md:hidden fixed inset-0 w-full h-full bg-white transform translate-x-full transition-transform duration-300 ease-in-out z-40">
+            <!-- Close Button -->
+            <button id="mobile-menu-close-ar"
+                class="absolute top-6 left-6 w-10 h-10 flex items-center justify-center bg-gray-100 rounded-full hover:bg-gray-200 transition-colors">
+                <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg>
+            </button>
+
+            <!-- Menu Content -->
+            <div class="flex flex-col w-full h-full pt-20 pb-8 px-8">
+                <!-- Navigation Links -->
+                <nav class="flex-1 flex flex-col justify-center space-y-6 w-full">
+                    <a href="#home-ar"
+                        class="mobile-nav-link text-lg font-heading font-medium text-gray-dark hover:text-primary transition-colors py-3 px-4 rounded-lg hover:bg-gray-50 border-b border-gray-100">الرئيسية</a>
+                    <a href="#about-ar"
+                        class="mobile-nav-link text-lg font-heading font-medium text-gray-dark hover:text-primary transition-colors py-3 px-4 rounded-lg hover:bg-gray-50 border-b border-gray-100">من
+                        نحن</a>
+                    <a href="#why-choose-us-ar"
+                        class="mobile-nav-link text-lg font-heading font-medium text-gray-dark hover:text-primary transition-colors py-3 px-4 rounded-lg hover:bg-gray-50 border-b border-gray-100">لماذا
+                        تختارنا</a>
+                    <a href="#services-ar"
+                        class="mobile-nav-link text-lg font-heading font-medium text-gray-dark hover:text-primary transition-colors py-3 px-4 rounded-lg hover:bg-gray-50 border-b border-gray-100">الخدمات</a>
+                    <a href="#projects-ar"
+                        class="mobile-nav-link text-lg font-heading font-medium text-gray-dark hover:text-primary transition-colors py-3 px-4 rounded-lg hover:bg-gray-50 border-b border-gray-100">المشاريع</a>
+
+                    <!-- Mobile Language Toggle (Arabic duplicate) -->
+                    <button id="mobile-language-toggle-2"
+                        class="mobile-nav-link flex items-center justify-between text-lg font-heading font-medium text-gray-dark hover:text-primary transition-colors py-3 px-4 rounded-lg hover:bg-gray-50 border-b border-gray-100">
+                        <span>اللغة</span>
+                        <span id="mobile-current-lang-2" class="text-primary font-bold">EN</span>
+                    </button>
+                </nav>
+
+                <!-- CTA Button -->
+                <div class="mt-8 px-4">
+                    <a href="#contact"
+                        class="mobile-nav-link w-full bg-primary hover:bg-primary-hover text-white text-center py-4 px-6 rounded-lg text-lg font-heading font-medium uppercase tracking-wider transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl block">اتصل
+                        بنا</a>
+                </div>
+
+                <!-- Footer -->
+                <div class="text-center pt-6 border-t border-gray-200">
+                    <p class="text-sm text-gray-500">مؤسسة الأثل</p>
+                    <p class="text-xs text-gray-400 mt-1">تأسست 2020</p>
+                </div>
+            </div>
+        </div>
     </header>
 
     <!-- Main Content -->
     <div id="page-container" class="relative">
 
-        <!-- Hero Section -->
-        <section id="home" class="relative w-full h-screen hero-bg section-lines overflow-hidden">
+        <!-- Hero Section (English) -->
+        <section id="home" class="english relative w-full h-screen hero-bg section-lines overflow-hidden">
             <!-- Background Videos for Smooth Transitions -->
             <video id="hero-video-1"
                 class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out"
@@ -1013,8 +1191,64 @@
             </button>
         </section>
 
-        <!-- About Section -->
-        <section id="about" class="relative py-20 lg:py-32 overflow-hidden bg-[#f0f4f7]">
+        <!-- Hero Section (Arabic) -->
+        <section id="home-ar" lang="ar" dir="rtl"
+            class="arabic relative w-full h-screen hero-bg section-lines overflow-hidden">
+            <!-- Background Videos for Smooth Transitions -->
+            <video id="hero-video-1-ar"
+                class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out"
+                autoplay muted playsinline preload="auto" poster="assets/img/hero.jpeg">
+                <source src="assets/video/hero3.mp4" type="video/mp4">
+                متصفحك لا يدعم تشغيل الفيديو.
+            </video>
+            <video id="hero-video-2-ar"
+                class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out opacity-0"
+                muted playsinline preload="auto">
+                <source src="assets/video/hero4.mp4" type="video/mp4">
+                متصفحك لا يدعم تشغيل الفيديو.
+            </video>
+            <div class="absolute inset-0 flex items-end">
+                <div class="w-full pb-24 md:pb-0 md:flex md:items-end md:justify-start md:pl-20">
+                    <div class="relative bg-primary px-8 py-10 md:px-12 md:py-12 lg:w-2/5 hero-content">
+                        <div class="relative z-10">
+                            <div class="mb-4">
+                                <div class="text-xs font-bold uppercase tracking-widest text-white opacity-50 mb-3 stagger-animation"
+                                    style="animation-delay: 0.2s;" data-translate="Established 2020">تأسست عام ٢٠٢٠
+                                </div>
+                                <h1 class="text-xl md:text-3xl font-heading font-medium text-white leading-tight stagger-animation"
+                                    style="animation-delay: 0.4s;"
+                                    data-translate="AL ATHEL ESTABLISHMENT is a comprehensive construction management team and general contractor.">
+                                    مؤسسة الأثل هي فريق شامل لإدارة البناء ومقاول عام متخصص.</h1>
+                            </div>
+                            <p class="text-sm md:text-base text-white opacity-60 leading-relaxed stagger-animation"
+                                style="animation-delay: 0.6s;"
+                                data-translate="We deliver residential, commercial, and infrastructure projects with safety, sustainability, and on-time delivery—our ingredients for construction excellence.">
+                                نقوم بتنفيذ المشاريع السكنية والتجارية والبنية التحتية بأمان واستدامة وتسليم في الوقت
+                                المحدد — مكوناتنا للتميز في البناء.</p>
+                        </div>
+                    </div>
+
+                    <div class="hidden md:block md:w-1/5 bg-white hero-content" style="animation-delay: 0.8s;">
+                        <button
+                            class="w-full h-full py-12 text-primary font-bold text-sm hover:bg-primary hover:text-white transition-all duration-300 transform hover:scale-105">
+                            <div class="text-center floating" data-translate="Scroll to discover">اسحب للاستكشاف
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <button
+                class="absolute bottom-0 right-0 w-full md:w-20 h-24 md:h-16 bg-white md:bg-transparent fill-primary md:fill-white flex items-center justify-center z-10">
+                <svg width="20" height="34" viewBox="0 0 20 34">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M8 0v26.2l-8-8.1v5.7L10 34l10-10.2v-5.7l-8 8.1V0H8z" />
+                </svg>
+            </button>
+        </section>
+
+        <!-- About Section (English) -->
+        <section id="about" class="english relative py-20 lg:py-32 overflow-hidden bg-[#f0f4f7]">
             <!-- Background Pattern -->
             <div class="absolute inset-0 opacity-5">
                 <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-primary/10 to-transparent"></div>
@@ -1112,8 +1346,102 @@
             </div>
         </section>
 
-        <!-- Vision Section -->
-        <section class="relative bg-gray-light section-lines">
+        <!-- About Section (Arabic) -->
+        <section id="about-ar" lang="ar" dir="rtl" class="arabic relative py-20 lg:py-32 overflow-hidden bg-[#f0f4f7]">
+            <!-- Background Pattern -->
+            <div class="absolute inset-0 opacity-5">
+                <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-primary/10 to-transparent"></div>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-6 lg:px-8 relative">
+                <!-- Section Header -->
+                <div class="text-center mb-16 animate-fade-in-up">
+                    <span class="text-primary text-sm font-bold uppercase tracking-widest mb-4 block">قصتنا</span>
+                    <h2 class="text-4xl lg:text-6xl font-heading font-medium text-gray-dark mb-6">
+                        عملنا ثمرة شغف <span class="text-primary">وحب</span>
+                    </h2>
+                </div>
+
+                <!-- Main Content Grid -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                    <!-- Left Image - Craftsman -->
+                    <div class="animate-slide-in-left">
+                        <div class="relative group">
+                            <div
+                                class="aspect-[4/3]   overflow-hidden shadow-2xl transform group-hover:scale-105 transition-all duration-700">
+                                <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=2076&q=80"
+                                    alt="حرفي يعمل" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+                            </div>
+                            <!-- Floating Stats Card -->
+                            <div class="absolute -bottom-6 -left-6 bg-white p-6   shadow-xl border border-gray-100 animate-bounce-in"
+                                style="animation-delay: 0.8s;">
+                                <div class="text-primary text-3xl font-heading font-bold">20+</div>
+                                <div class="text-gray-600 text-sm font-medium">سنوات خبرة</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Content -->
+                    <div class="animate-fade-in-up" style="animation-delay: 0.4s;">
+                        <div class="space-y-6">
+                            <p class="text-xl text-gray-600 leading-relaxed">
+                                لنكن صادقين—عملنا مع العملاء ليس مجرد جدران؛ بل يتعلق بكل ما يحدث داخلها.
+                            </p>
+                            <div class="w-16 h-0.5 bg-primary animate-expand" style="animation-delay: 0.6s;"></div>
+                            <p class="text-lg text-gray-600 leading-relaxed">
+                                الإنتاجية والابتكار والإنجازات والتقدم. لهذا نعمل مع كل عميل لابتكار مساحات تتجاوز
+                                الاحتياجات التجارية.
+                            </p>
+                            <p class="text-lg text-gray-600 leading-relaxed">
+                                نمزج معرفتنا بالتقنية وشغفنا بالتصميم المتميز لنقدم شيئًا لا يوصف إلا بالمُتفرد.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Stats Row -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20 animate-fade-in-up"
+                    style="animation-delay: 1s;">
+                    <div class="text-center group">
+                        <div class="text-3xl lg:text-4xl font-heading font-bold text-primary mb-2 counter"
+                            data-target="150">0</div>
+                        <div class="text-sm text-gray-600 uppercase tracking-wider">مشاريع منجزة</div>
+                    </div>
+                    <div class="text-center group">
+                        <div class="text-3xl lg:text-4xl font-heading font-bold text-primary mb-2 counter"
+                            data-target="50">0</div>
+                        <div class="text-sm text-gray-600 uppercase tracking-wider">عملاء سعداء</div>
+                    </div>
+                    <div class="text-center group">
+                        <div class="text-3xl lg:text-4xl font-heading font-bold text-primary mb-2 counter"
+                            data-target="25">0</div>
+                        <div class="text-sm text-gray-600 uppercase tracking-wider">أعضاء الفريق</div>
+                    </div>
+                    <div class="text-center group">
+                        <div class="text-3xl lg:text-4xl font-heading font-bold text-primary mb-2 counter"
+                            data-target="4">0</div>
+                        <div class="text-sm text-gray-600 uppercase tracking-wider">سنوات من التميز</div>
+                    </div>
+                </div>
+
+                <!-- Call to Action -->
+                <div class="text-center mt-16 animate-fade-in-up" style="animation-delay: 1.2s;">
+                    <a href="#projects"
+                        class="inline-flex items-center px-8 py-4 bg-primary text-white font-medium   hover:bg-primary-hover transition-all duration-300 transform hover:scale-105 group">
+                        <span>تعرّف على أعمالنا</span>
+                        <svg class="ml-2 w-5 h-5 transform group-hover:-translate-x-1 transition-transform duration-300"
+                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M7 16l-4-4m0 0l4-4m-4 4h18"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Vision Section (English) -->
+        <section class="english relative bg-gray-light section-lines">
             <div class="flex flex-col md:flex-row">
                 <!-- Content Side -->
                 <div class="w-full md:w-1/2 bg-white relative order-2 md:order-1 flex items-center">
@@ -1147,8 +1475,42 @@
             </div>
         </section>
 
-        <!-- Why Choose Us Section -->
-        <section id="why-choose-us" class="relative py-20 lg:py-32 bg-white overflow-hidden">
+        <!-- Vision Section (Arabic) -->
+        <section lang="ar" dir="rtl" class="arabic relative bg-gray-light section-lines">
+            <div class="flex flex-col md:flex-row">
+                <!-- Content Side -->
+                <div class="w-full md:w-1/2 bg-white relative order-2 md:order-1 flex items-center">
+                    <div class="p-8 md:p-16 lg:p-20 w-full">
+                        <h1 class="text-lg font-heading font-bold text-primary mb-8 tracking-wider slide-in-left">رؤيتنا
+                        </h1>
+                        <h2 class="text-2xl md:text-4xl font-heading font-medium text-gray-dark leading-tight mb-8 slide-in-left"
+                            style="animation-delay: 0.2s;">نُحدث ثورة في البناء من خلال الابتكار والاستدامة.</h2>
+
+                        <div class="text-sm md:text-base text-gray-600 leading-relaxed mb-8 slide-in-left"
+                            style="animation-delay: 0.4s;">
+                            رؤيتنا هي إحداث نقلة نوعية في قطاع البناء عبر تقديم مشاريع مبتكرة ومستدامة عالية الجودة
+                            تتجاوز توقعات العملاء وتثري المجتمعات — مع تعزيز بيئة عمل آمنة وشاملة وبناء شراكات طويلة
+                            الأمد.
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <!-- Image Side -->
+                <div class="w-full md:w-1/2 h-96 md:h-auto relative overflow-hidden order-1 md:order-2 image-overlay">
+                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+                        alt="مبنى حديث" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-bl from-primary to-primary-hover opacity-70"></div>
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="text-white text-4xl font-heading font-medium opacity-40 floating">الابتكار</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Us Section (English) -->
+        <section id="why-choose-us" class="english relative py-20 lg:py-32 bg-white overflow-hidden">
             <div class="max-w-7xl mx-auto px-6 lg:px-8">
                 <!-- Section Header -->
                 <div class="text-center mb-16 animate-fade-in-up">
@@ -1260,8 +1622,114 @@
             </div>
         </section>
 
-        <!-- Services Section -->
-        <section id="services" class="relative py-20 lg:py-32 bg-[#f0f4f7] overflow-hidden">
+        <!-- Why Choose Us Section (Arabic) -->
+        <section id="why-choose-us-ar" lang="ar" dir="rtl"
+            class="arabic relative py-20 lg:py-32 bg-white overflow-hidden">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                <!-- Section Header -->
+                <div class="text-center mb-16 animate-fade-in-up">
+                    <span class="text-primary text-sm font-bold uppercase tracking-widest mb-4 block">لماذا
+                        تختارنا</span>
+                    <h2 class="text-4xl lg:text-6xl font-heading font-medium text-gray-dark mb-6">شريكك <span
+                            class="text-primary">الموثوق</span> في البناء</h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                        نمزج الخبرة والابتكار والالتزام لنقدم نتائج استثنائية في كل مشروع.
+                    </p>
+                </div>
+
+                <!-- Features Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Feature 1 -->
+                    <div class="text-center group animate-fade-in-up" style="animation-delay: 0.1s;">
+                        <div
+                            class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
+                            <svg class="w-8 h-8 text-primary group-hover:text-white transition-colors duration-300"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-heading font-bold text-gray-dark mb-3">ضمان الجودة</h3>
+                        <p class="text-gray-600 leading-relaxed">عمليات رقابة صارمة لضمان أن يلبي كل مشروع أعلى
+                            المعايير.</p>
+                    </div>
+
+                    <!-- Feature 2 -->
+                    <div class="text-center group animate-fade-in-up" style="animation-delay: 0.2s;">
+                        <div
+                            class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
+                            <svg class="w-8 h-8 text-primary group-hover:text-white transition-colors duration-300"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-heading font-bold text-gray-dark mb-3">التسليم في الوقت المحدد</h3>
+                        <p class="text-gray-600 leading-relaxed">نلتزم بإنجاز المشاريع وفق الجداول الزمنية دون المساس
+                            بالجودة.</p>
+                    </div>
+
+                    <!-- Feature 3 -->
+                    <div class="text-center group animate-fade-in-up" style="animation-delay: 0.3s;">
+                        <div
+                            class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
+                            <svg class="w-8 h-8 text-primary group-hover:text-white transition-colors duration-300"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-heading font-bold text-gray-dark mb-3">الابتكار</h3>
+                        <p class="text-gray-600 leading-relaxed">تقنيات متقدمة وأساليب بناء حديثة لتحقيق نتائج متفوقة.
+                        </p>
+                    </div>
+
+                    <!-- Feature 4 -->
+                    <div class="text-center group animate-fade-in-up" style="animation-delay: 0.4s;">
+                        <div
+                            class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
+                            <svg class="w-8 h-8 text-primary group-hover:text-white transition-colors duration-300"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-heading font-bold text-gray-dark mb-3">فريق خبير</h3>
+                        <p class="text-gray-600 leading-relaxed">محترفون ذوو خبرات متراكمة تمتد لعقود في قطاع البناء.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Stats Section -->
+                <div class="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 animate-fade-in-up"
+                    style="animation-delay: 0.5s;">
+                    <div class="text-center">
+                        <div class="text-4xl lg:text-5xl font-heading font-bold text-primary mb-2 counter"
+                            data-target="150">0</div>
+                        <div class="text-sm text-gray-600 uppercase tracking-wider">مشاريع منجزة</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl lg:text-5xl font-heading font-bold text-primary mb-2 counter"
+                            data-target="50">0</div>
+                        <div class="text-sm text-gray-600 uppercase tracking-wider">عملاء سعداء</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl lg:text-5xl font-heading font-bold text-primary mb-2 counter"
+                            data-target="4">0</div>
+                        <div class="text-sm text-gray-600 uppercase tracking-wider">سنوات خبرة</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl lg:text-5xl font-heading font-bold text-primary mb-2 counter"
+                            data-target="25">0</div>
+                        <div class="text-sm text-gray-600 uppercase tracking-wider">أعضاء الفريق</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section (English) -->
+        <section id="services" class="english relative py-20 lg:py-32 bg-[#f0f4f7] overflow-hidden">
             <div class="max-w-7xl mx-auto px-6 lg:px-8">
                 <!-- Section Header -->
                 <div class="text-center mb-16 animate-fade-in-up">
@@ -1555,8 +2023,256 @@
             </div>
         </section>
 
-        <!-- Projects & Clients Section -->
-        <section id="projects" class="relative py-20 lg:py-32 bg-gray-light overflow-hidden">
+        <!-- Services Section (Arabic) -->
+        <section id="services-ar" lang="ar" dir="rtl"
+            class="arabic relative py-20 lg:py-32 bg-[#f0f4f7] overflow-hidden">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                <!-- Section Header -->
+                <div class="text-center mb-16 animate-fade-in-up">
+                    <span class="text-primary text-sm font-bold uppercase tracking-widest mb-4 block">ماذا نقدم</span>
+                    <h2 class="text-4xl lg:text-6xl font-heading font-medium text-gray-dark mb-6">خدمات<span
+                            class="text-primary">نا</span></h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                        خدمات متكاملة عبر دورة حياة المشروع بالكامل وبخبرات تغطي جميع جوانب البناء الحديث.
+                    </p>
+                </div>
+
+                <!-- Services Slick Slider -->
+                <div class="services-slider-container">
+                    <!-- Steel Structure Works -->
+                    <div class="service-card">
+                        <div
+                            class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 mx-2">
+                            <div class="aspect-[4/3] overflow-hidden relative">
+                                <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                    alt="أعمال الهياكل الفولاذية"
+                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <span
+                                    class="inline-block text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 px-3 py-1 rounded-full mb-3">إنشاءات</span>
+                                <h3
+                                    class="text-xl font-heading font-bold text-gray-dark mb-3 group-hover:text-primary transition-colors duration-300">
+                                    أعمال الهياكل الفولاذية</h3>
+                                <p class="text-gray-600 leading-relaxed text-sm">تصنيع وتركيب فولاذي احترافي للمشاريع
+                                    الصناعية والتجارية بدقة هندسية.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Structure Works -->
+                    <div class="service-card">
+                        <div
+                            class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 mx-2">
+                            <div class="aspect-[4/3] overflow-hidden relative">
+                                <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                    alt="الأعمال الإنشائية"
+                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <span
+                                    class="inline-block text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 px-3 py-1 rounded-full mb-3">إنشائي</span>
+                                <h3
+                                    class="text-xl font-heading font-bold text-gray-dark mb-3 group-hover:text-primary transition-colors duration-300">
+                                    الأعمال الإنشائية</h3>
+                                <p class="text-gray-600 leading-relaxed text-sm">تنفيذ الأعمال الخرسانية والأساسات
+                                    وأنظمة الجدران الحاملة بشكل متكامل.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Civil Works -->
+                    <div class="service-card">
+                        <div
+                            class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 mx-2">
+                            <div class="aspect-[4/3] overflow-hidden relative">
+                                <img src="assets/img/civil.webp" alt="الأعمال المدنية"
+                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <span
+                                    class="inline-block text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 px-3 py-1 rounded-full mb-3">بنية
+                                    تحتية</span>
+                                <h3
+                                    class="text-xl font-heading font-bold text-gray-dark mb-3 group-hover:text-primary transition-colors duration-300">
+                                    الأعمال المدنية</h3>
+                                <p class="text-gray-600 leading-relaxed text-sm">تطوير البنية التحتية بما يشمل الطرق
+                                    والمرافق وأنظمة التصريف وأعمال تجهيز المواقع.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Electromechanical Works -->
+                    <div class="service-card">
+                        <div
+                            class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 mx-2">
+                            <div class="aspect-[4/3] overflow-hidden relative">
+                                <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                    alt="الأعمال الكهروميكانيكية"
+                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <span
+                                    class="inline-block text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 px-3 py-1 rounded-full mb-3">كهروميكانيكا</span>
+                                <h3
+                                    class="text-xl font-heading font-bold text-gray-dark mb-3 group-hover:text-primary transition-colors duration-300">
+                                    الأعمال الكهروميكانيكية</h3>
+                                <p class="text-gray-600 leading-relaxed text-sm">تركيب أنظمة كهربائية وميكانيكية متكاملة
+                                    تشمل توزيع الطاقة والأتمتة.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- HVAC Works -->
+                    <div class="service-card">
+                        <div
+                            class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 mx-2">
+                            <div class="aspect-[4/3] overflow-hidden relative">
+                                <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                    alt="أعمال التكييف والتهوية"
+                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <span
+                                    class="inline-block text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 px-3 py-1 rounded-full mb-3">مناخ</span>
+                                <h3
+                                    class="text-xl font-heading font-bold text-gray-dark mb-3 group-hover:text-primary transition-colors duration-300">
+                                    أعمال التكييف والتهوية</h3>
+                                <p class="text-gray-600 leading-relaxed text-sm">أنظمة تكييف وتهوية متقدمة لضمان أفضل
+                                    تحكم بالمناخ الداخلي.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Low Current Works -->
+                    <div class="service-card">
+                        <div
+                            class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 mx-2">
+                            <div class="aspect-[4/3] overflow-hidden relative">
+                                <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                    alt="أعمال التيار الخفيف"
+                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <span
+                                    class="inline-block text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 px-3 py-1 rounded-full mb-3">أنظمة
+                                    أمان</span>
+                                <h3
+                                    class="text-xl font-heading font-bold text-gray-dark mb-3 group-hover:text-primary transition-colors duration-300">
+                                    أعمال التيار الخفيف</h3>
+                                <p class="text-gray-600 leading-relaxed text-sm">أنظمة الأمن والإنذار والاتصالات وأتمتة
+                                    المباني.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- IT Solutions -->
+                    <div class="service-card">
+                        <div
+                            class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 mx-2">
+                            <div class="aspect-[4/3] overflow-hidden relative">
+                                <img src="assets/img/it-infrastructures.jpg" alt="حلول تقنية المعلومات"
+                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <span
+                                    class="inline-block text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 px-3 py-1 rounded-full mb-3">تقنية</span>
+                                <h3
+                                    class="text-xl font-heading font-bold text-gray-dark mb-3 group-hover:text-primary transition-colors duration-300">
+                                    حلول تقنية المعلومات</h3>
+                                <p class="text-gray-600 leading-relaxed text-sm">بُنى تحتية للشبكات ومراكز بيانات
+                                    وتقنيات المباني الذكية وخدمات التكامل الرقمي.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Finishing Works -->
+                    <div class="service-card">
+                        <div
+                            class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 mx-2">
+                            <div class="aspect-[4/3] overflow-hidden relative">
+                                <img src="assets/img/lehbi/WhatsApp Image 2025-10-02 at 19.42.25 (2).jpeg"
+                                    alt="أعمال التشطيبات"
+                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <span
+                                    class="inline-block text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 px-3 py-1 rounded-full mb-3">تشطيبات</span>
+                                <h3
+                                    class="text-xl font-heading font-bold text-gray-dark mb-3 group-hover:text-primary transition-colors duration-300">
+                                    أعمال التشطيبات</h3>
+                                <p class="text-gray-600 leading-relaxed text-sm">تشطيبات داخلية وخارجية عالية الجودة
+                                    تشمل الأرضيات والدهانات والتفاصيل المعمارية.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Design, Interior & Exterior Decorative -->
+                    <div class="service-card">
+                        <div
+                            class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 mx-2">
+                            <div class="aspect-[4/3] overflow-hidden relative">
+                                <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                    alt="التصميم والديكور الداخلي والخارجي"
+                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <span
+                                    class="inline-block text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 px-3 py-1 rounded-full mb-3">تصميم</span>
+                                <h3
+                                    class="text-xl font-heading font-bold text-gray-dark mb-3 group-hover:text-primary transition-colors duration-300">
+                                    التصميم والديكور الداخلي والخارجي</h3>
+                                <p class="text-gray-600 leading-relaxed text-sm">حلول تصميم إبداعية وديكور داخلي
+                                    وتعزيزات معمارية خارجية.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Call to Action -->
+                <div class="text-center mt-16 animate-fade-in-up" style="animation-delay: 1s;">
+                    <a href="#contact"
+                        class="inline-flex items-center px-8 py-4 bg-primary text-white font-medium rounded-lg hover:bg-primary-hover transition-all duration-300 transform hover:scale-105 group">
+                        <span>ابدأ مشروعك الآن</span>
+                        <svg class="mr-2 w-5 h-5 transform group-hover:-translate-x-1 transition-transform duration-300"
+                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M7 16l-4-4m0 0l4-4m-4 4h18"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects & Clients Section (English) -->
+        <section id="projects" class="english relative py-20 lg:py-32 bg-gray-light overflow-hidden">
             <div class="max-w-7xl mx-auto px-6 lg:px-8">
                 <!-- Section Header -->
                 <div class="text-center mb-16 animate-fade-in-up">
@@ -2315,6 +3031,184 @@
             </div>
         </section>
 
+        <!-- Projects & Clients Section (Arabic) -->
+        <section id="projects-ar" lang="ar" dir="rtl"
+            class="arabic relative py-20 lg:py-32 bg-gray-light overflow-hidden">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                <!-- Section Header -->
+                <div class="text-center mb-16 animate-fade-in-up">
+                    <span class="text-primary text-sm font-bold uppercase tracking-widest mb-4 block">مشاريعنا
+                        وعملاؤنا</span>
+                    <h2 class="text-4xl lg:text-6xl font-heading font-medium text-gray-dark mb-6">نقدّم التميز عبر <span
+                            class="text-primary">قطاعات متنوعة</span></h2>
+                </div>
+
+                <!-- Full-Width Project Slider -->
+                <div class="relative">
+                    <div class="project-slider-wrapper overflow-hidden rounded-2xl shadow-2xl">
+                        <div class="project-slider flex transition-transform duration-500 ease-in-out"
+                            id="projectSliderAr">
+                            <!-- Slide 1 (Lehbi Morsalat) -->
+                            <div class="project-slide min-w-full flex flex-col lg:flex-row bg-white">
+                                <div class="w-full lg:w-3/5 relative">
+                                    <div class="aspect-[16/10] lg:aspect-[4/3] overflow-hidden">
+                                        <img src="assets/img/lehbi/1.jpeg" alt="مركز رعاية الكلى لحبي - فرع المرسلات"
+                                            class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+                                    </div>
+                                </div>
+                                <div class="w-full lg:w-2/5 p-8 lg:p-12 flex flex-col justify-center relative">
+                                    <div class="space-y-6">
+                                        <span
+                                            class="inline-block text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 px-4 py-2 rounded-full">الرعاية
+                                            الصحية</span>
+                                        <div>
+                                            <h3
+                                                class="text-2xl lg:text-3xl font-heading font-bold text-gray-dark mb-3 leading-tight">
+                                                مركز رعاية الكلى لحبي - فرع المرسلات</h3>
+                                            <p class="text-lg text-gray-600 mb-4 font-medium">مجموعة لحبي الطبية</p>
+                                            <p class="text-base text-gray-600 leading-relaxed line-height-1.6">مركز
+                                                متقدم لرعاية الكلى مزود بمرافق غسيل كلوي متخصصة ومعدات طبية حديثة.</p>
+                                        </div>
+                                        <div class="flex items-center space-x-6 text-sm text-gray-600">
+                                            <div class="flex items-center">
+                                                <div class="w-2 h-2 bg-accent-green rounded-full mr-2"></div>
+                                                <span>12 غرفة علاج</span>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <div class="w-2 h-2 bg-primary rounded-full mr-2"></div>
+                                                <span>500+ مراجع شهريًا</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="absolute bottom-8 left-8 flex items-center space-x-3">
+                                        <a href="#contact"
+                                            class="inline-flex items-center px-6 py-3 bg-primary text-white font-medium rounded-lg hover:bg-primary-hover transition-all duration-300 transform hover:scale-105 shadow-lg focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50">
+                                            <span>ابدأ مشروعك</span>
+                                            <svg class="mr-2 w-4 h-4" fill="none" stroke="currentColor"
+                                                viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M7 16l-4-4m0 0l4-4m-4 4h18"></path>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Slide 2 (Alissa Factory) -->
+                            <div class="project-slide min-w-full flex flex-col lg:flex-row bg-white">
+                                <div class="w-full lg:w-3/5 relative">
+                                    <div class="aspect-[16/10] lg:aspect-[4/3] overflow-hidden">
+                                        <img src="assets/img/alessa.gif" alt="مصنع العيسى هنت إير"
+                                            class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+                                    </div>
+                                </div>
+                                <div class="w-full lg:w-2/5 p-8 lg:p-12 flex flex-col justify-center relative">
+                                    <div class="space-y-6">
+                                        <span
+                                            class="inline-block text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 px-4 py-2 rounded-full">تصنيع
+                                            / صناعي</span>
+                                        <div>
+                                            <h3
+                                                class="text-2xl lg:text-3xl font-heading font-bold text-gray-dark mb-3 leading-tight">
+                                                مصنع العيسى هنت إير</h3>
+                                            <p class="text-lg text-gray-600 mb-4 font-medium">مجموعة العيسى</p>
+                                            <p class="text-base text-gray-600 leading-relaxed line-height-1.6">مصنع
+                                                أنظمة هواء متقدمة يقدم حلول تكييف مبتكرة بممارسات مستدامة.</p>
+                                        </div>
+                                        <div class="flex items-center space-x-6 text-sm text-gray-600">
+                                            <div class="flex items-center">
+                                                <div class="w-2 h-2 bg-accent-green rounded-full mr-2"></div>
+                                                <span>+1,200 وحدة مركبة</span>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <div class="w-2 h-2 bg-primary rounded-full mr-2"></div><span>توفير 25%
+                                                    من الطاقة</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="absolute bottom-8 left-8 flex items-center space-x-3">
+                                        <a href="#contact"
+                                            class="inline-flex items-center px-6 py-3 bg-primary text-white font-medium rounded-lg hover:bg-primary-hover transition-all duration-300 transform hover:scale-105 shadow-lg focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50">
+                                            <span>ابدأ مشروعك</span>
+                                            <svg class="mr-2 w-4 h-4" fill="none" stroke="currentColor"
+                                                viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M7 16l-4-4m0 0l4-4m-4 4h18"></path>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Additional slides omitted for brevity: mirror and translate as needed -->
+                        </div>
+                    </div>
+
+                    <!-- Slider Indicators (Dots) -->
+                    <div class="flex justify-center mt-8 space-x-2">
+                        <button
+                            class="slider-dot w-3 h-3 rounded-full bg-primary transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50"
+                            data-slide="0" aria-label="اذهب إلى الشريحة 1"></button>
+                        <button
+                            class="slider-dot w-3 h-3 rounded-full bg-gray-300 hover:bg-primary/50 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50"
+                            data-slide="1" aria-label="اذهب إلى الشريحة 2"></button>
+                    </div>
+                </div>
+
+                <!-- Client Logos Section -->
+                <div class="mt-20 animate-fade-in-up">
+                    <div class="text-center mb-12">
+                        <h3 class="text-2xl lg:text-3xl font-heading font-medium text-gray-dark mb-4">موثوقون من قِبل
+                            <span class="text-primary">عملاء رائدين</span>
+                        </h3>
+                        <p class="text-gray-600 max-w-2xl mx-auto">نفخر بشراكاتنا مع رواد الصناعة والشركات المبتكرة عبر
+                            مختلف القطاعات</p>
+                    </div>
+
+                    <div class="client-logos">
+                        <div class="logo-grid">
+                            <img src="assets/img/logos/elseif.png" alt="EL SEIF" class="client-logo">
+                            <img src="assets/img/logos/lehbi.png" alt="LEHBI Renal Care" class="client-logo">
+                            <img src="assets/img/logos/alessa.png" alt="ALESSA" class="client-logo">
+                            <img src="assets/img/logos/Mema.jpg" alt="MEMAR" class="client-logo">
+                            <img src="assets/img/logos/obayer-logo.svg" alt="Obayer Residential Complex Co."
+                                class="client-logo">
+                            <img src="assets/img/logos/lebnan.jpg" alt="Benban Solar Developers Association"
+                                class="client-logo">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Partners Section -->
+                <div class="mt-20 animate-fade-in-up">
+                    <div class="text-center mb-12">
+                        <h3 class="text-2xl lg:text-3xl font-heading font-medium text-gray-dark mb-4"><span
+                                class="text-primary">شركاؤنا</span> الموثوقون</h3>
+                        <p class="text-gray-600 max-w-2xl mx-auto">نعمل مع شركاء عالميين لتقديم حلول بناء استثنائية</p>
+                    </div>
+
+                    <div class="client-logos">
+                        <div class="logo-grid">
+                            <img src="assets/img/partners/3m.svg" alt="3M" class="client-logo">
+                            <img src="assets/img/partners/SABIC-LOGO.svg" alt="SABIC" class="client-logo">
+                            <img src="assets/img/partners/schneider-electric.png" alt="Schneider Electric"
+                                class="client-logo">
+                            <img src="assets/img/partners/jotun.png" alt="Jotun" class="client-logo">
+                            <img src="assets/img/partners/trane.png" alt="Trane" class="client-logo">
+                            <img src="assets/img/partners/somfy.png" alt="Somfy" class="client-logo">
+                            <img src="assets/img/partners/legrand-logo.png" alt="Legrand" class="client-logo">
+                            <img src="assets/img/partners/seffco 1.png" alt="Seffco" class="client-logo">
+                            <img src="assets/img/partners/ultra.svg" alt="Ultra" class="client-logo">
+                            <img src="assets/img/partners/Zeta-White-1.svg" alt="Zeta" class="client-logo">
+                            <img src="assets/img/partners/gree-logo-vector.png" alt="Gree" class="client-logo">
+                            <img src="assets/img/partners/heba-firesafety-logo.png" alt="Heba Fire Safety"
+                                class="client-logo">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
 
 
 
@@ -2517,14 +3411,35 @@
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
         const mobileMenuClose = document.getElementById('mobile-menu-close');
+        // Arabic mobile menu elements
+        const mobileMenuAr = document.getElementById('mobile-menu-ar');
+        const mobileMenuCloseAr = document.getElementById('mobile-menu-close-ar');
         const mobileMenuLines = document.querySelectorAll('.mobile-menu-line');
         let isMenuOpen = false;
+
+        // Helper: active menu based on language
+        function getActiveMobileMenu() {
+            try {
+                return (typeof currentLanguage !== 'undefined' && currentLanguage === 'ar') ? (mobileMenuAr || mobileMenu) : mobileMenu;
+            } catch (_) {
+                return mobileMenu;
+            }
+        }
+
+        function getActiveMobileMenuClose() {
+            try {
+                return (typeof currentLanguage !== 'undefined' && currentLanguage === 'ar') ? (mobileMenuCloseAr || mobileMenuClose) : mobileMenuClose;
+            } catch (_) {
+                return mobileMenuClose;
+            }
+        }
 
         // Function to open mobile menu
         function openMobileMenu() {
             isMenuOpen = true;
-            mobileMenu.classList.remove('translate-x-full');
-            mobileMenu.classList.add('translate-x-0');
+            const activeMenu = getActiveMobileMenu();
+            activeMenu.classList.remove('translate-x-full');
+            activeMenu.classList.add('translate-x-0');
             document.body.style.overflow = 'hidden';
 
             // Animate hamburger to X
@@ -2536,8 +3451,11 @@
         // Function to close mobile menu
         function closeMobileMenu() {
             isMenuOpen = false;
-            mobileMenu.classList.add('translate-x-full');
-            mobileMenu.classList.remove('translate-x-0');
+            [mobileMenu, mobileMenuAr].forEach(menu => {
+                if (!menu) return;
+                menu.classList.add('translate-x-full');
+                menu.classList.remove('translate-x-0');
+            });
             document.body.style.overflow = '';
 
             // Reset hamburger
@@ -2557,6 +3475,7 @@
 
         // Close button functionality
         mobileMenuClose.addEventListener('click', closeMobileMenu);
+        if (mobileMenuCloseAr) mobileMenuCloseAr.addEventListener('click', closeMobileMenu);
 
         // Close mobile menu when clicking on links
         const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
@@ -2856,7 +3775,8 @@
         const videoSequence = [
             'assets/video/hero3.mp4',
             'assets/video/hero4.mp4',
-            'assets/video/hero1.mp4'
+            'assets/video/hero1.mp4',
+            'assets/video/hero6.mp4'
         ];
 
         let currentVideoIndex = 0;
@@ -2868,14 +3788,24 @@
             const nextIndex = (currentVideoIndex + 1) % videoSequence.length;
             const nextVideoSrc = videoSequence[nextIndex];
 
-            // Preload the next video
-            nextVideo.src = nextVideoSrc;
+            // Update the source element inside the video tag
+            const sourceElement = nextVideo.querySelector('source');
+            if (sourceElement) {
+                sourceElement.src = nextVideoSrc;
+            } else {
+                // If no source element exists, set the video src directly
+                nextVideo.src = nextVideoSrc;
+            }
+
+            // Reload the video with new source
             nextVideo.load();
         }
 
         function crossfadeToNextVideo() {
             if (isTransitioning) return;
             isTransitioning = true;
+
+            console.log(`Transitioning to video ${currentVideoIndex + 1}: ${videoSequence[(currentVideoIndex + 1) % videoSequence.length]}`);
 
             // Start playing the next video
             nextVideo.play().then(() => {
@@ -2897,37 +3827,166 @@
                     preloadNextVideo();
 
                     isTransitioning = false;
+
+                    console.log(`Now playing video ${currentVideoIndex}: ${videoSequence[currentVideoIndex]}`);
                 }, 1000); // Match the CSS transition duration
 
             }).catch(error => {
-                console.log('Next video play failed:', error);
+                console.error('Next video play failed:', error);
+                // Try to continue with the sequence even if one video fails
+                currentVideoIndex = (currentVideoIndex + 1) % videoSequence.length;
+                preloadNextVideo();
                 isTransitioning = false;
             });
         }
 
         // Initialize video sequence
         if (heroVideo1 && heroVideo2) {
+            console.log('Initializing video sequence with videos:', videoSequence);
+
             // Preload the second video
             preloadNextVideo();
 
             // Set up event listeners for both videos
-            [heroVideo1, heroVideo2].forEach(video => {
-                video.addEventListener('ended', crossfadeToNextVideo);
+            [heroVideo1, heroVideo2].forEach((video, index) => {
+                video.addEventListener('ended', () => {
+                    console.log(`Video ${index + 1} ended, transitioning to next`);
+                    crossfadeToNextVideo();
+                });
 
                 video.addEventListener('error', function (e) {
-                    console.log('Video error:', e);
+                    console.error(`Video ${index + 1} error:`, e);
                     if (!isTransitioning) {
-                        crossfadeToNextVideo();
+                        setTimeout(() => crossfadeToNextVideo(), 500);
                     }
+                });
+
+                video.addEventListener('loadeddata', function () {
+                    console.log(`Video ${index + 1} loaded successfully`);
+                });
+
+                video.addEventListener('canplay', function () {
+                    console.log(`Video ${index + 1} can play`);
                 });
             });
 
             // Ensure first video starts playing
-            heroVideo1.play().catch(error => {
-                console.log('Initial video play failed:', error);
+            heroVideo1.play().then(() => {
+                console.log('First video started playing successfully');
+            }).catch(error => {
+                console.error('Initial video play failed:', error);
             });
 
             console.log('Smooth video sequence initialized');
+        } else {
+            console.error('Hero video elements not found');
+        }
+
+        // Arabic Hero Video Sequence Functionality
+        const heroVideo1Ar = document.getElementById('hero-video-1-ar');
+        const heroVideo2Ar = document.getElementById('hero-video-2-ar');
+
+        let currentVideoIndexAr = 0;
+        let activeVideoAr = heroVideo1Ar;
+        let nextVideoAr = heroVideo2Ar;
+        let isTransitioningAr = false;
+
+        function preloadNextVideoAr() {
+            const nextIndex = (currentVideoIndexAr + 1) % videoSequence.length;
+            const nextVideoSrc = videoSequence[nextIndex];
+
+            // Update the source element inside the video tag
+            const sourceElement = nextVideoAr.querySelector('source');
+            if (sourceElement) {
+                sourceElement.src = nextVideoSrc;
+            } else {
+                // If no source element exists, set the video src directly
+                nextVideoAr.src = nextVideoSrc;
+            }
+
+            // Reload the video with new source
+            nextVideoAr.load();
+        }
+
+        function crossfadeToNextVideoAr() {
+            if (isTransitioningAr) return;
+            isTransitioningAr = true;
+
+            console.log(`Arabic: Transitioning to video ${currentVideoIndexAr + 1}: ${videoSequence[(currentVideoIndexAr + 1) % videoSequence.length]}`);
+
+            // Start playing the next video
+            nextVideoAr.play().then(() => {
+                // Crossfade: fade out current, fade in next
+                activeVideoAr.style.opacity = '0';
+                nextVideoAr.style.opacity = '1';
+
+                // After transition completes, swap the videos
+                setTimeout(() => {
+                    // Swap active and next video references
+                    const temp = activeVideoAr;
+                    activeVideoAr = nextVideoAr;
+                    nextVideoAr = temp;
+
+                    // Update video index
+                    currentVideoIndexAr = (currentVideoIndexAr + 1) % videoSequence.length;
+
+                    // Preload the next video for seamless transitions
+                    preloadNextVideoAr();
+
+                    isTransitioningAr = false;
+
+                    console.log(`Arabic: Now playing video ${currentVideoIndexAr}: ${videoSequence[currentVideoIndexAr]}`);
+                }, 1000); // Match the CSS transition duration
+
+            }).catch(error => {
+                console.error('Arabic: Next video play failed:', error);
+                // Try to continue with the sequence even if one video fails
+                currentVideoIndexAr = (currentVideoIndexAr + 1) % videoSequence.length;
+                preloadNextVideoAr();
+                isTransitioningAr = false;
+            });
+        }
+
+        // Initialize Arabic video sequence
+        if (heroVideo1Ar && heroVideo2Ar) {
+            console.log('Initializing Arabic video sequence with videos:', videoSequence);
+
+            // Preload the second video
+            preloadNextVideoAr();
+
+            // Set up event listeners for both videos
+            [heroVideo1Ar, heroVideo2Ar].forEach((video, index) => {
+                video.addEventListener('ended', () => {
+                    console.log(`Arabic Video ${index + 1} ended, transitioning to next`);
+                    crossfadeToNextVideoAr();
+                });
+
+                video.addEventListener('error', function (e) {
+                    console.error(`Arabic Video ${index + 1} error:`, e);
+                    if (!isTransitioningAr) {
+                        setTimeout(() => crossfadeToNextVideoAr(), 500);
+                    }
+                });
+
+                video.addEventListener('loadeddata', function () {
+                    console.log(`Arabic Video ${index + 1} loaded successfully`);
+                });
+
+                video.addEventListener('canplay', function () {
+                    console.log(`Arabic Video ${index + 1} can play`);
+                });
+            });
+
+            // Ensure first video starts playing
+            heroVideo1Ar.play().then(() => {
+                console.log('Arabic: First video started playing successfully');
+            }).catch(error => {
+                console.error('Arabic: Initial video play failed:', error);
+            });
+
+            console.log('Arabic: Smooth video sequence initialized');
+        } else {
+            console.error('Arabic: Hero video elements not found');
         }
     </script>
 
@@ -2997,7 +4056,7 @@
             }
         };
 
-        let currentLanguage = 'en';
+        let currentLanguage = 'ar';
 
         function switchLanguage() {
             currentLanguage = currentLanguage === 'en' ? 'ar' : 'en';
@@ -3007,11 +4066,20 @@
             document.documentElement.lang = currentLanguage;
 
             // Update language indicators
-            document.getElementById('current-lang').textContent = currentLanguage.toUpperCase();
-            document.getElementById('mobile-current-lang').textContent = currentLanguage.toUpperCase();
+            const langEl1 = document.getElementById('current-lang');
+            const langEl2 = document.getElementById('current-lang-2');
+            const mobLang1 = document.getElementById('mobile-current-lang');
+            const mobLang2 = document.getElementById('mobile-current-lang-2');
+            if (langEl1) langEl1.textContent = currentLanguage.toUpperCase();
+            if (langEl2) langEl2.textContent = currentLanguage.toUpperCase();
+            if (mobLang1) mobLang1.textContent = currentLanguage.toUpperCase();
+            if (mobLang2) mobLang2.textContent = currentLanguage.toUpperCase();
 
             // Update all translatable elements
             updateTranslations();
+
+            // Toggle visibility of language-specific blocks
+            updateLanguageVisibility();
 
             // Save language preference
             localStorage.setItem('preferred-language', currentLanguage);
@@ -3027,21 +4095,49 @@
             });
         }
 
+        // Show only the current language blocks
+        function updateLanguageVisibility() {
+            const showAr = currentLanguage === 'ar';
+            document.querySelectorAll('.english').forEach(el => el.classList.toggle('lang-hidden', showAr));
+            document.querySelectorAll('.arabic').forEach(el => el.classList.toggle('lang-hidden', !showAr));
+        }
+
         // Initialize language system
         document.addEventListener('DOMContentLoaded', function () {
             // Load saved language preference
             const savedLanguage = localStorage.getItem('preferred-language');
-            if (savedLanguage && savedLanguage !== currentLanguage) {
+            if (savedLanguage) {
                 currentLanguage = savedLanguage;
-                switchLanguage();
             }
+            
+            // Set dir/lang and indicators
+            document.documentElement.dir = currentLanguage === 'ar' ? 'rtl' : 'ltr';
+            document.documentElement.lang = currentLanguage;
+            const langEl1 = document.getElementById('current-lang');
+            const langEl2 = document.getElementById('current-lang-2');
+            const mobLang1 = document.getElementById('mobile-current-lang');
+            const mobLang2 = document.getElementById('mobile-current-lang-2');
+            if (langEl1) langEl1.textContent = (currentLanguage === 'en' ? 'AR' : 'EN');
+            if (langEl2) langEl2.textContent = (currentLanguage === 'en' ? 'AR' : 'EN');
+            if (mobLang1) mobLang1.textContent = (currentLanguage === 'en' ? 'AR' : 'EN');
+            if (mobLang2) mobLang2.textContent = (currentLanguage === 'en' ? 'AR' : 'EN');
+            
+            // Apply initial visibility for language-specific blocks immediately
+            updateLanguageVisibility();
 
             // Add event listeners
             document.getElementById('language-toggle').addEventListener('click', switchLanguage);
+            const languageToggle2 = document.getElementById('language-toggle-2');
+            if (languageToggle2) languageToggle2.addEventListener('click', switchLanguage);
             document.getElementById('mobile-language-toggle').addEventListener('click', switchLanguage);
+            const mobileLanguageToggle2 = document.getElementById('mobile-language-toggle-2');
+            if (mobileLanguageToggle2) mobileLanguageToggle2.addEventListener('click', switchLanguage);
 
             // Add data-translate attributes to existing elements
             addTranslateAttributes();
+
+            // Apply initial visibility for language-specific blocks
+            updateLanguageVisibility();
         });
 
         function addTranslateAttributes() {
