@@ -799,7 +799,7 @@
             background-color: rgba(90, 134, 173, 0.1);
             color: #5A86AD;
         }
-        .flex-col{
+        .flex-col2{
             flex-direction: column !important;
             
         }
@@ -814,10 +814,7 @@
             text-align: right;
         }
 
-        [dir="rtl"] .flex {
-            flex-direction: row-reverse;
-        }
-
+     
         [dir="rtl"] .space-x-6>*+* {
             margin-left: 0;
             margin-right: 1.5rem;
@@ -828,10 +825,7 @@
             margin-right: 0.5rem;
         }
 
-        [dir="rtl"] .justify-between {
-            flex-direction: row-reverse;
-        }
-
+       
         [dir="rtl"] .text-left {
             text-align: right;
         }
@@ -841,9 +835,7 @@
         }
 
         /* RTL Logo positioning */
-        [dir="rtl"] .header .flex.items-center.justify-between {
-            flex-direction: row-reverse;
-        }
+   
 
         [dir="rtl"] .header .logo-animation {
             order: 2;
@@ -863,9 +855,7 @@
         }
 
         /* RTL Navigation spacing adjustments */
-        [dir="rtl"] .header .space-x-6 {
-            flex-direction: row-reverse;
-        }
+  
 
         /* Override for Arabic navigation - use normal row direction */
         [dir="rtl"] .header .arabic .space-x-6 {
@@ -1103,7 +1093,7 @@
             <!-- Menu Content -->
             <div class="flex flex-col w-full h-full pt-20 pb-8 px-8">
                 <!-- Navigation Links -->
-                <nav class="flex-1 flex flex-col justify-center space-y-6 w-full order-0">
+                <nav class="flex-1 flex flex-col justify-center space-y-6 w-full order-0 flex-col2">
                     <a href="#home-ar"
                         class="mobile-nav-link text-lg font-heading font-medium text-gray-dark hover:text-primary transition-colors py-3 px-4 rounded-lg hover:bg-gray-50 border-b border-gray-100">الرئيسية</a>
                     <a href="#about-ar"
