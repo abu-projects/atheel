@@ -565,6 +565,7 @@
             transform: scale(1.02);
         }
 
+  
         .slider-dot {
             cursor: pointer;
             transition: all 0.3s ease;
@@ -793,12 +794,12 @@
             transform: translateY(-1px);
         }
 
-        .header.scrolled #language-toggle {
+        .header.scrolled #language-toggle ,header.scrolled button#language-toggle-2  {
             border-color: rgba(90, 134, 173, 0.3);
             color: #2A2F35;
         }
 
-        .header.scrolled #language-toggle:hover {
+        .header.scrolled #language-toggle:hover , header.scrolled button#language-toggle-2:hover {
             background-color: rgba(90, 134, 173, 0.1);
             color: #5A86AD;
         }
@@ -1215,7 +1216,7 @@
                 متصفحك لا يدعم تشغيل الفيديو.
             </video>
             <div class="absolute inset-0 flex items-end">
-                <div class="w-full pb-24 md:pb-0 md:flex md:items-end md:justify-start md:pl-20">
+                <div class="w-full pb-24 md:pb-0 md:flex md:items-end md:justify-end md:pl-20">
                     <div class="relative bg-primary px-8 py-10 md:px-12 md:py-12 lg:w-2/5 hero-content">
                         <div class="relative z-10">
                             <div class="mb-4">
@@ -1246,7 +1247,7 @@
             </div>
 
             <button
-                class="absolute bottom-0 right-0 w-full md:w-20 h-24 md:h-16 bg-white md:bg-transparent fill-primary md:fill-white flex items-center justify-center z-10">
+                class="absolute bottom-0 left-0 w-full md:w-20 h-24 md:h-16 bg-white md:bg-transparent fill-primary md:fill-white flex items-center justify-center z-10">
                 <svg width="20" height="34" viewBox="0 0 20 34">
                     <path fill-rule="evenodd" clip-rule="evenodd"
                         d="M8 0v26.2l-8-8.1v5.7L10 34l10-10.2v-5.7l-8 8.1V0H8z" />
@@ -1434,10 +1435,10 @@
 
                 <!-- Call to Action -->
                 <div class="text-center mt-16 animate-fade-in-up" style="animation-delay: 1.2s;">
-                    <a href="#projects"
+                    <a href="#projects-ar"
                         class="inline-flex items-center px-8 py-4 bg-primary text-white font-medium   hover:bg-primary-hover transition-all duration-300 transform hover:scale-105 group">
                         <span>تعرّف على أعمالنا</span>
-                        <svg class="ml-2 w-5 h-5 transform group-hover:-translate-x-1 transition-transform duration-300"
+                        <svg class="mr-2 w-5 h-5 transform group-hover:-translate-x-1 transition-transform duration-300"
                             fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M7 16l-4-4m0 0l4-4m-4 4h18"></path>
@@ -3055,110 +3056,395 @@
                     <div class="project-slider-wrapper overflow-hidden rounded-2xl shadow-2xl">
                         <div class="project-slider flex transition-transform duration-500 ease-in-out"
                             id="projectSliderAr">
-                            <!-- Slide 1 (Lehbi Morsalat) -->
-                            <div class="project-slide min-w-full flex flex-col lg:flex-row bg-white">
-                                <div class="w-full lg:w-3/5 relative">
-                                    <div class="aspect-[16/10] lg:aspect-[4/3] overflow-hidden">
-                                        <img src="assets/img/lehbi/1.jpeg" alt="مركز رعاية الكلى لحبي - فرع المرسلات"
-                                            class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
-                                    </div>
-                                </div>
-                                <div class="w-full lg:w-2/5 p-8 lg:p-12 flex flex-col justify-center relative">
-                                    <div class="space-y-6">
-                                        <span
-                                            class="inline-block text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 px-4 py-2 rounded-full">الرعاية
-                                            الصحية</span>
-                                        <div>
-                                            <h3
-                                                class="text-2xl lg:text-3xl font-heading font-bold text-gray-dark mb-3 leading-tight">
-                                                مركز رعاية الكلى لحبي - فرع المرسلات</h3>
-                                            <p class="text-lg text-gray-600 mb-4 font-medium">مجموعة لحبي الطبية</p>
-                                            <p class="text-base text-gray-600 leading-relaxed line-height-1.6">مركز
-                                                متقدم لرعاية الكلى مزود بمرافق غسيل كلوي متخصصة ومعدات طبية حديثة.</p>
-                                        </div>
-                                        <div class="flex items-center space-x-6 text-sm text-gray-600">
-                                            <div class="flex items-center">
-                                                <div class="w-2 h-2 bg-accent-green rounded-full mr-2"></div>
-                                                <span>12 غرفة علاج</span>
-                                            </div>
-                                            <div class="flex items-center">
-                                                <div class="w-2 h-2 bg-primary rounded-full mr-2"></div>
-                                                <span>500+ مراجع شهريًا</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="absolute bottom-8 left-8 flex items-center space-x-3">
-                                        <a href="#contact"
-                                            class="inline-flex items-center px-6 py-3 bg-primary text-white font-medium rounded-lg hover:bg-primary-hover transition-all duration-300 transform hover:scale-105 shadow-lg focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50">
-                                            <span>ابدأ مشروعك</span>
-                                            <svg class="mr-2 w-4 h-4" fill="none" stroke="currentColor"
-                                                viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M7 16l-4-4m0 0l4-4m-4 4h18"></path>
-                                            </svg>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
+  <!-- Slide 1 (Lehbi Morsalat) -->
+  <div class="project-slide min-w-full flex flex-col lg:flex-row bg-white">
+    <div class="w-full lg:w-3/5 relative">
+      <div class="aspect-[16/10] lg:aspect-[4/3] overflow-hidden">
+        <img src="assets/img/lehbi/1.jpeg" alt="مركز رعاية الكلى لحبي - فرع المرسلات" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+      </div>
+    </div>
+    <div class="w-full lg:w-2/5 p-8 lg:p-12 flex flex-col justify-center relative">
+      <div class="space-y-6">
+        <span class="inline-block text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 px-4 py-2 rounded-full">الرعاية الصحية</span>
+        <div>
+          <h3 class="text-2xl lg:text-3xl font-heading font-bold text-gray-dark mb-3 leading-tight">مركز رعاية الكلى لحبي - فرع المرسلات</h3>
+          <p class="text-lg text-gray-600 mb-4 font-medium">مجموعة لحبي الطبية</p>
+          <p class="text-base text-gray-600 leading-relaxed line-height-1.6">مركز متقدم لرعاية الكلى مزوّد بمرافق غسيل كلوي متخصصة ومعدات طبية حديثة.</p>
+        </div>
+        <div class="flex items-center space-x-6 text-sm text-gray-600">
+          <div class="flex items-center">
+            <div class="w-2 h-2 bg-accent-green rounded-full mr-2"></div>
+            <span>12 غرفة علاج</span>
+          </div>
+          <div class="flex items-center">
+            <div class="w-2 h-2 bg-primary rounded-full mr-2"></div>
+            <span>500+ مراجع شهريًا</span>
+          </div>
+        </div>
+      </div>
+      <!-- Controls positioned at bottom-left (RTL) -->
+      <div class="absolute bottom-8 left-8 flex items-center space-x-3">
+        <button class="prev-btn w-12 h-12 bg-white hover:bg-gray-50 text-primary border border-gray-200 rounded-full shadow-lg transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50" aria-label="المشروع السابق">
+          <svg class="w-5 h-5 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+          </svg>
+        </button>
+        <button class="next-btn w-12 h-12 bg-white hover:bg-gray-50 text-primary border border-gray-200 rounded-full shadow-lg transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50" aria-label="المشروع التالي">
+          <svg class="w-5 h-5 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </button>
+        <a href="#contact" class="inline-flex items-center px-6 py-3 bg-primary text-white font-medium rounded-lg hover:bg-primary-hover transition-all duration-300 transform hover:scale-105 shadow-lg focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50">
+          <span>ابدأ مشروعك</span>
+          <svg class="mr-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
 
-                            <!-- Slide 2 (Alissa Factory) -->
-                            <div class="project-slide min-w-full flex flex-col lg:flex-row bg-white">
-                                <div class="w-full lg:w-3/5 relative">
-                                    <div class="aspect-[16/10] lg:aspect-[4/3] overflow-hidden">
-                                        <img src="assets/img/alessa.gif" alt="مصنع العيسى هنت إير"
-                                            class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
-                                    </div>
-                                </div>
-                                <div class="w-full lg:w-2/5 p-8 lg:p-12 flex flex-col justify-center relative">
-                                    <div class="space-y-6">
-                                        <span
-                                            class="inline-block text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 px-4 py-2 rounded-full">تصنيع
-                                            / صناعي</span>
-                                        <div>
-                                            <h3
-                                                class="text-2xl lg:text-3xl font-heading font-bold text-gray-dark mb-3 leading-tight">
-                                                مصنع العيسى هنت إير</h3>
-                                            <p class="text-lg text-gray-600 mb-4 font-medium">مجموعة العيسى</p>
-                                            <p class="text-base text-gray-600 leading-relaxed line-height-1.6">مصنع
-                                                أنظمة هواء متقدمة يقدم حلول تكييف مبتكرة بممارسات مستدامة.</p>
-                                        </div>
-                                        <div class="flex items-center space-x-6 text-sm text-gray-600">
-                                            <div class="flex items-center">
-                                                <div class="w-2 h-2 bg-accent-green rounded-full mr-2"></div>
-                                                <span>+1,200 وحدة مركبة</span>
-                                            </div>
-                                            <div class="flex items-center">
-                                                <div class="w-2 h-2 bg-primary rounded-full mr-2"></div><span>توفير 25%
-                                                    من الطاقة</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="absolute bottom-8 left-8 flex items-center space-x-3">
-                                        <a href="#contact"
-                                            class="inline-flex items-center px-6 py-3 bg-primary text-white font-medium rounded-lg hover:bg-primary-hover transition-all duration-300 transform hover:scale-105 shadow-lg focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50">
-                                            <span>ابدأ مشروعك</span>
-                                            <svg class="mr-2 w-4 h-4" fill="none" stroke="currentColor"
-                                                viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M7 16l-4-4m0 0l4-4m-4 4h18"></path>
-                                            </svg>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
+  <!-- Slide 2 (Alissa Factory Hunt Air) -->
+  <div class="project-slide min-w-full flex flex-col lg:flex-row bg-white">
+    <div class="w-full lg:w-3/5 relative">
+      <div class="aspect-[16/10] lg:aspect-[4/3] overflow-hidden">
+        <img src="assets/img/alessa.gif" alt="مصنع العيسى هنت إير" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+      </div>
+    </div>
+    <div class="w-full lg:w-2/5 p-8 lg:p-12 flex flex-col justify-center relative">
+      <div class="space-y-6">
+        <span class="inline-block text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 px-4 py-2 rounded-full">تصنيع / صناعي</span>
+        <div>
+          <h3 class="text-2xl lg:text-3xl font-heading font-bold text-gray-dark mb-3 leading-tight">مصنع العيسى هنت إير</h3>
+          <p class="text-lg text-gray-600 mb-4 font-medium">مجموعة العيسى</p>
+          <p class="text-base text-gray-600 leading-relaxed line-height-1.6">منشأة تصنيع لأنظمة الهواء المتقدمة تقدم حلول تكييف مبتكرة بممارسات مستدامة.</p>
+        </div>
+        <div class="flex items-center space-x-6 text-sm text-gray-600">
+          <div class="flex items-center">
+            <div class="w-2 h-2 bg-accent-green rounded-full mr-2"></div>
+            <span>+1,200 وحدة مركّبة</span>
+          </div>
+          <div class="flex items-center">
+            <div class="w-2 h-2 bg-primary rounded-full mr-2"></div>
+            <span>توفير 25% من الطاقة</span>
+          </div>
+        </div>
+      </div>
+      <div class="absolute bottom-8 left-8 flex items-center space-x-3">
+        <button class="prev-btn w-12 h-12 bg-white hover:bg-gray-50 text-primary border border-gray-200 rounded-full shadow-lg transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50" aria-label="المشروع السابق">
+          <svg class="w-5 h-5 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+          </svg>
+        </button>
+        <button class="next-btn w-12 h-12 bg-white hover:bg-gray-50 text-primary border border-gray-200 rounded-full shadow-lg transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50" aria-label="المشروع التالي">
+          <svg class="w-5 h-5 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </button>
+        <a href="#contact" class="inline-flex items-center px-6 py-3 bg-primary text-white font-medium rounded-lg hover:bg-primary-hover transition-all duration-300 transform hover:scale-105 shadow-lg focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50">
+          <span>ابدأ مشروعك</span>
+          <svg class="mr-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
 
-                            <!-- Additional slides omitted for brevity: mirror and translate as needed -->
+  <!-- Slide 3 (Rehabilitation Alissa Tower) -->
+  <div class="project-slide min-w-full flex flex-col lg:flex-row bg-white">
+    <div class="w-full lg:w-3/5 relative">
+      <div class="aspect-[16/10] lg:aspect-[4/3] overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1600582859856-ec8b1bd23394?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=2069&amp;q=80" alt="تأهيل برج العيسى" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+      </div>
+    </div>
+    <div class="w-full lg:w-2/5 p-8 lg:p-12 flex flex-col justify-center relative">
+      <div class="space-y-6">
+        <span class="inline-block text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 px-4 py-2 rounded-full">تجاري / إداري</span>
+        <div>
+          <h3 class="text-2xl lg:text-3xl font-heading font-bold text-gray-dark mb-3 leading-tight">تأهيل برج العيسى</h3>
+          <p class="text-lg text-gray-600 mb-4 font-medium">العيسى القابضة</p>
+          <p class="text-base text-gray-600 leading-relaxed line-height-1.6">تجديد شامل للواجهات والفراغات الداخلية ورفع كفاءة الأنظمة الميكانيكية والكهربائية.</p>
+        </div>
+        <div class="flex items-center space-x-6 text-sm text-gray-600">
+          <div class="flex items-center">
+            <div class="w-2 h-2 bg-accent-green rounded-full mr-2"></div>
+            <span>30 طابقًا</span>
+          </div>
+          <div class="flex items-center">
+            <div class="w-2 h-2 bg-primary rounded-full mr-2"></div>
+            <span>+10,000 م² مساحة تأجيرية</span>
+          </div>
+        </div>
+      </div>
+      <div class="absolute bottom-8 left-8 flex items-center space-x-3">
+        <button class="prev-btn w-12 h-12 bg-white hover:bg-gray-50 text-primary border border-gray-200 rounded-full shadow-lg transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50" aria-label="المشروع السابق">
+          <svg class="w-5 h-5 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+          </svg>
+        </button>
+        <button class="next-btn w-12 h-12 bg-white hover:bg-gray-50 text-primary border border-gray-200 rounded-full shadow-lg transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50" aria-label="المشروع التالي">
+          <svg class="w-5 h-5 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </button>
+        <a href="#contact" class="inline-flex items-center px-6 py-3 bg-primary text-white font-medium rounded-lg hover:bg-primary-hover transition-all duration-300 transform hover:scale-105 shadow-lg focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50">
+          <span>ابدأ مشروعك</span>
+          <svg class="mr-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 4 (Benban Compound Villas) -->
+  <div class="project-slide min-w-full flex flex-col lg:flex-row bg-white">
+    <div class="w-full lg:w-3/5 relative">
+      <div class="aspect-[16/10] lg:aspect-[4/3] overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1600582843800-17fe0b3d43e1?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=2070&amp;q=80" alt="ڤيلات كمباوند بنبان" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+      </div>
+    </div>
+    <div class="w-full lg:w-2/5 p-8 lg:p-12 flex flex-col justify-center relative">
+      <div class="space-y-6">
+        <span class="inline-block text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 px-4 py-2 rounded-full">سكني / تطوير</span>
+        <div>
+          <h3 class="text-2xl lg:text-3xl font-heading font-bold text-gray-dark mb-3 leading-tight">ڤيلات كمباوند بنبان</h3>
+          <p class="text-lg text-gray-600 mb-4 font-medium">مطور إقليمي</p>
+          <p class="text-base text-gray-600 leading-relaxed line-height-1.6">مجتمع سكني متكامل يضم فللًا حديثة ومرافق عائلية ومساحات خضراء واسعة.</p>
+        </div>
+        <div class="flex items-center space-x-6 text-sm text-gray-600">
+          <div class="flex items-center">
+            <div class="w-2 h-2 bg-accent-green rounded-full mr-2"></div>
+            <span>150+ وحدة سكنية</span>
+          </div>
+          <div class="flex items-center">
+            <div class="w-2 h-2 bg-primary rounded-full mr-2"></div>
+            <span>70% تغطية خضراء</span>
+          </div>
+        </div>
+      </div>
+      <div class="absolute bottom-8 left-8 flex items-center space-x-3">
+        <button class="prev-btn w-12 h-12 bg-white hover:bg-gray-50 text-primary border border-gray-200 rounded-full shadow-lg transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50" aria-label="المشروع السابق">
+          <svg class="w-5 h-5 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+          </svg>
+        </button>
+        <button class="next-btn w-12 h-12 bg-white hover:bg-gray-50 text-primary border border-gray-200 rounded-full shadow-lg transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50" aria-label="المشروع التالي">
+          <svg class="w-5 h-5 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </button>
+        <a href="#contact" class="inline-flex items-center px-6 py-3 bg-primary text-white font-medium rounded-lg hover:bg-primary-hover transition-all duration-300 transform hover:scale-105 shadow-lg focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50">
+          <span>ابدأ مشروعك</span>
+          <svg class="mr-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 5 (Compound Wadi Obair) -->
+  <div class="project-slide min-w-full flex flex-col lg:flex-row bg-white">
+    <div class="w-full lg:w-3/5 relative">
+      <div class="aspect-[16/10] lg:aspect-[4/3] overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=2053&amp;q=80" alt="كمباوند وادي عُبَير" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+      </div>
+    </div>
+    <div class="w-full lg:w-2/5 p-8 lg:p-12 flex flex-col justify-center relative">
+      <div class="space-y-6">
+        <span class="inline-block text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 px-4 py-2 rounded-full">عقاري / سكني</span>
+        <div>
+          <h3 class="text-2xl lg:text-3xl font-heading font-bold text-gray-dark mb-3 leading-tight">كمباوند وادي عُبَير</h3>
+          <p class="text-lg text-gray-600 mb-4 font-medium">مطور إقليمي</p>
+          <p class="text-base text-gray-600 leading-relaxed line-height-1.6">مجتمع مسوّر يوفّر فللاً حديثة ومرافق عائلية مع تغطية خضراء واسعة.</p>
+        </div>
+        <div class="flex items-center space-x-6 text-sm text-gray-600">
+          <div class="flex items-center">
+            <div class="w-2 h-2 bg-accent-green rounded-full mr-2"></div>
+            <span>150+ وحدة سكنية</span>
+          </div>
+          <div class="flex items-center">
+            <div class="w-2 h-2 bg-primary rounded-full mr-2"></div>
+            <span>70% تغطية خضراء</span>
+          </div>
+        </div>
+      </div>
+      <div class="absolute bottom-8 left-8 flex items-center space-x-3">
+        <button class="prev-btn w-12 h-12 bg-white hover:bg-gray-50 text-primary border border-gray-200 rounded-full shadow-lg transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50" aria-label="المشروع السابق">
+          <svg class="w-5 h-5 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+          </svg>
+        </button>
+        <button class="next-btn w-12 h-12 bg-white hover:bg-gray-50 text-primary border border-gray-200 rounded-full shadow-lg transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50" aria-label="المشروع التالي">
+          <svg class="w-5 h-5 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </button>
+        <a href="#contact" class="inline-flex items-center px-6 py-3 bg-primary text-white font-medium rounded-lg hover:bg-primary-hover transition-all duration-300 transform hover:scale-105 shadow-lg focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50">
+          <span>ابدأ مشروعك</span>
+          <svg class="mr-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 6 (Lehbi Renal Care Morsalat Branch - Image 2) -->
+  <div class="project-slide min-w-full flex flex-col lg:flex-row bg-white">
+    <div class="w-full lg:w-3/5 relative">
+      <div class="aspect-[16/10] lg:aspect-[4/3] overflow-hidden">
+        <img src="assets/img/lehbi/WhatsApp Image 2025-10-02 at 19.42.24 (2).jpeg" alt="مركز لحبي لرعاية الكلى - المرسلات" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+      </div>
+    </div>
+    <div class="w-full lg:w-2/5 p-8 lg:p-12 flex flex-col justify-center relative">
+      <div class="space-y-6">
+        <span class="inline-block text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 px-4 py-2 rounded-full">الرعاية الصحية</span>
+        <div>
+          <h3 class="text-2xl lg:text-3xl font-heading font-bold text-gray-dark mb-3 leading-tight">مركز لحبي لرعاية الكلى - المرسلات</h3>
+          <p class="text-lg text-gray-600 mb-4 font-medium">مجموعة لحبي الطبية</p>
+          <p class="text-base text-gray-600 leading-relaxed line-height-1.6">مركز مجهّز بأحدث تقنيات الغسيل الكلوي لتقديم رعاية متقدمة للمرضى.</p>
+        </div>
+        <div class="flex items-center space-x-6 text-sm text-gray-600">
+          <div class="flex items-center">
+            <div class="w-2 h-2 bg-accent-green rounded-full mr-2"></div>
+            <span>12 غرفة علاج</span>
+          </div>
+          <div class="flex items-center">
+            <div class="w-2 h-2 bg-primary rounded-full mr-2"></div>
+            <span>500+ مراجع شهريًا</span>
+          </div>
+        </div>
+      </div>
+      <div class="absolute bottom-8 left-8 flex items-center space-x-3">
+        <button class="prev-btn w-12 h-12 bg-white hover:bg-gray-50 text-primary border border-gray-200 rounded-full shadow-lg transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50" aria-label="المشروع السابق">
+          <svg class="w-5 h-5 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+          </svg>
+        </button>
+        <button class="next-btn w-12 h-12 bg-white hover:bg-gray-50 text-primary border border-gray-200 rounded-full shadow-lg transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50" aria-label="المشروع التالي">
+          <svg class="w-5 h-5 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </button>
+        <a href="#contact" class="inline-flex items-center px-6 py-3 bg-primary text-white font-medium rounded-lg hover:bg-primary-hover transition-all duration-300 transform hover:scale-105 shadow-lg focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50">
+          <span>ابدأ مشروعك</span>
+          <svg class="mr-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 7 (Lehbi Renal Care Shefa Branch) -->
+  <div class="project-slide min-w-full flex flex-col lg:flex-row bg-white">
+    <div class="w-full lg:w-3/5 relative">
+      <div class="aspect-[16/10] lg:aspect-[4/3] overflow-hidden">
+        <img src="assets/img/lehbi/WhatsApp Image 2025-10-02 at 19.42.24.jpeg" alt="مركز لحبي لرعاية الكلى - فرع الشفاء" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+      </div>
+    </div>
+    <div class="w-full lg:w-2/5 p-8 lg:p-12 flex flex-col justify-center relative">
+      <div class="space-y-6">
+        <span class="inline-block text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 px-4 py-2 rounded-full">الرعاية الصحية</span>
+        <div>
+          <h3 class="text-2xl lg:text-3xl font-heading font-bold text-gray-dark mb-3 leading-tight">مركز لحبي لرعاية الكلى - فرع الشفاء</h3>
+          <p class="text-lg text-gray-600 mb-4 font-medium">مجموعة لحبي الطبية</p>
+          <p class="text-base text-gray-600 leading-relaxed line-height-1.6">وحدة رعاية متقدمة لعلاج أمراض الكلى في حي الشفاء بأحدث تقنيات الغسيل.</p>
+        </div>
+        <div class="flex items-center space-x-6 text-sm text-gray-600">
+          <div class="flex items-center">
+            <div class="w-2 h-2 bg-accent-green rounded-full mr-2"></div>
+            <span>15 جهاز غسيل</span>
+          </div>
+          <div class="flex items-center">
+            <div class="w-2 h-2 bg-primary rounded-full mr-2"></div>
+            <span>+1,000 مراجع سنويًا</span>
+          </div>
+        </div>
+      </div>
+      <div class="absolute bottom-8 left-8 flex items-center space-x-3">
+        <button class="prev-btn w-12 h-12 bg-white hover:bg-gray-50 text-primary border border-gray-200 rounded-full shadow-lg transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50" aria-label="المشروع السابق">
+          <svg class="w-5 h-5 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+          </svg>
+        </button>
+        <button class="next-btn w-12 h-12 bg-white hover:bg-gray-50 text-primary border border-gray-200 rounded-full shadow-lg transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50" aria-label="المشروع التالي">
+          <svg class="w-5 h-5 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </button>
+        <a href="#contact" class="inline-flex items-center px-6 py-3 bg-primary text-white font-medium rounded-lg hover:bg-primary-hover transition-all duration-300 transform hover:scale-105 shadow-lg focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50">
+          <span>ابدأ مشروعك</span>
+          <svg class="mr-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 8 (Separate Residential Villas) -->
+  <div class="project-slide min-w-full flex flex-col lg:flex-row bg-white">
+    <div class="w-full lg:w-3/5 relative">
+      <div class="aspect-[16/10] lg:aspect-[4/3] overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=2070&amp;q=80" alt="فلل سكنية منفصلة" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+      </div>
+    </div>
+    <div class="w-full lg:w-2/5 p-8 lg:p-12 flex flex-col justify-center relative">
+      <div class="space-y-6">
+        <span class="inline-block text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 px-4 py-2 rounded-full">إنشاءات سكنية</span>
+        <div>
+          <h3 class="text-2xl lg:text-3xl font-heading font-bold text-gray-dark mb-3 leading-tight">فلل سكنية منفصلة</h3>
+          <p class="text-lg text-gray-600 mb-4 font-medium">مُلاّك خاصّون</p>
+          <p class="text-base text-gray-600 leading-relaxed line-height-1.6">فلل فاخرة مُصمّمة حسب رغبات العملاء مع تصاميم معمارية فريدة.</p>
+        </div>
+        <div class="flex items-center space-x-6 text-sm text-gray-600">
+          <div class="flex items-center">
+            <div class="w-2 h-2 bg-accent-green rounded-full mr-2"></div>
+            <span>25+ فيلا مستقلة</span>
+          </div>
+          <div class="flex items-center">
+            <div class="w-2 h-2 bg-primary rounded-full mr-2"></div>
+            <span>450 م² متوسط المساحة</span>
+          </div>
+        </div>
+      </div>
+      <div class="absolute bottom-8 left-8 flex items-center space-x-3">
+        <button class="prev-btn w-12 h-12 bg-white hover:bg-gray-50 text-primary border border-gray-200 rounded-full shadow-lg transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50" aria-label="المشروع السابق">
+          <svg class="w-5 h-5 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+          </svg>
+        </button>
+        <button class="next-btn w-12 h-12 bg-white hover:bg-gray-50 text-primary border border-gray-200 rounded-full shadow-lg transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50" aria-label="المشروع التالي">
+          <svg class="w-5 h-5 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </button>
+        <a href="#contact" class="inline-flex items-center px-6 py-3 bg-primary text-white font-medium rounded-lg hover:bg-primary-hover transition-all duration-300 transform hover:scale-105 shadow-lg focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50">
+          <span>ابدأ مشروعك</span>
+          <svg class="mr-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
                         </div>
                     </div>
 
                     <!-- Slider Indicators (Dots) -->
                     <div class="flex justify-center mt-8 space-x-2">
-                        <button
-                            class="slider-dot w-3 h-3 rounded-full bg-primary transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50"
-                            data-slide="0" aria-label="اذهب إلى الشريحة 1"></button>
-                        <button
-                            class="slider-dot w-3 h-3 rounded-full bg-gray-300 hover:bg-primary/50 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50"
-                            data-slide="1" aria-label="اذهب إلى الشريحة 2"></button>
+  <button class="slider-dot w-3 h-3 rounded-full bg-primary transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50" data-slide="0" aria-label="اذهب إلى الشريحة 1"></button>
+  <button class="slider-dot w-3 h-3 rounded-full bg-gray-300 hover:bg-primary/50 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50" data-slide="1" aria-label="اذهب إلى الشريحة 2"></button>
+  <button class="slider-dot w-3 h-3 rounded-full bg-gray-300 hover:bg-primary/50 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50" data-slide="2" aria-label="اذهب إلى الشريحة 3"></button>
+  <button class="slider-dot w-3 h-3 rounded-full bg-gray-300 hover:bg-primary/50 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50" data-slide="3" aria-label="اذهب إلى الشريحة 4"></button>
+  <button class="slider-dot w-3 h-3 rounded-full bg-gray-300 hover:bg-primary/50 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50" data-slide="4" aria-label="اذهب إلى الشريحة 5"></button>
+  <button class="slider-dot w-3 h-3 rounded-full bg-gray-300 hover:bg-primary/50 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50" data-slide="5" aria-label="اذهب إلى الشريحة 6"></button>
+  <button class="slider-dot w-3 h-3 rounded-full bg-gray-300 hover:bg-primary/50 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50" data-slide="6" aria-label="اذهب إلى الشريحة 7"></button>
+  <button class="slider-dot w-3 h-3 rounded-full bg-gray-300 hover:bg-primary/50 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50" data-slide="7" aria-label="اذهب إلى الشريحة 8"></button>
                     </div>
                 </div>
 
@@ -3622,106 +3908,113 @@
             });
         });
 
-        // Full-Width Project Slider Functionality
-        const projectSlider = document.getElementById('projectSlider');
-        const prevButtons = document.querySelectorAll('.prev-btn');
-        const nextButtons = document.querySelectorAll('.next-btn');
-        const sliderDots = document.querySelectorAll('.slider-dot');
-        let currentSlide = 0;
-        const totalSlides = 8; // Updated to 8 slides
+        // Full-Width Project Slider Functionality (EN + AR)
+        // ------- English slider (scoped) -------
+        (function () {
+          const projectSlider = document.getElementById('projectSlider');
+          if (!projectSlider) return;
 
-        function updateSlider() {
+          const prevButtons = document.querySelectorAll('#projects .prev-btn, .projects .prev-btn');
+          const nextButtons = document.querySelectorAll('#projects .next-btn, .projects .next-btn');
+          const sliderDots = document.querySelectorAll('#projects .slider-dot');
+          let currentSlide = 0;
+          let totalSlides = projectSlider.querySelectorAll('.project-slide').length;
+
+          function updateSlider() {
             const translateX = -currentSlide * 100;
             projectSlider.style.transform = `translateX(${translateX}%)`;
-
-            // Update dots
             sliderDots.forEach((dot, index) => {
-                if (index === currentSlide) {
-                    dot.classList.remove('bg-gray-300');
-                    dot.classList.add('bg-primary');
-                } else {
-                    dot.classList.remove('bg-primary');
-                    dot.classList.add('bg-gray-300');
-                }
+              if (index === currentSlide) {
+                dot.classList.remove('bg-gray-300');
+                dot.classList.add('bg-primary');
+              } else {
+                dot.classList.remove('bg-primary');
+                dot.classList.add('bg-gray-300');
+              }
             });
-        }
+          }
 
-        function nextSlide() {
+          function nextSlide() {
             currentSlide = (currentSlide + 1) % totalSlides;
             updateSlider();
-        }
+          }
 
-        function prevSlide() {
+          function prevSlide() {
             currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
             updateSlider();
-        }
+          }
 
-        // Event listeners for all prev/next buttons
-        prevButtons.forEach(button => {
-            button.addEventListener('click', prevSlide);
-        });
+          prevButtons.forEach(btn => btn.addEventListener('click', prevSlide));
+          nextButtons.forEach(btn => btn.addEventListener('click', nextSlide));
+          sliderDots.forEach((dot, index) => dot.addEventListener('click', () => { currentSlide = index; updateSlider(); }));
 
-        nextButtons.forEach(button => {
-            button.addEventListener('click', nextSlide);
-        });
+          const sliderWrapper = document.querySelector('#projects .project-slider-wrapper') || document.querySelector('.project-slider-wrapper');
+          let autoPlayInterval = setInterval(nextSlide, 6000);
+          if (sliderWrapper) {
+            sliderWrapper.addEventListener('mouseenter', () => clearInterval(autoPlayInterval));
+            sliderWrapper.addEventListener('mouseleave', () => { autoPlayInterval = setInterval(nextSlide, 6000); });
+            let startX = 0, endX = 0;
+            sliderWrapper.addEventListener('touchstart', e => { startX = e.touches[0].clientX; });
+            sliderWrapper.addEventListener('touchend', e => { endX = e.changedTouches[0].clientX; const diff = startX - endX; if (Math.abs(diff) > 50) { diff > 0 ? nextSlide() : prevSlide(); } });
+          }
 
-        // Dot navigation
-        sliderDots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                currentSlide = index;
-                updateSlider();
+          document.addEventListener('keydown', e => { if (e.key === 'ArrowLeft') prevSlide(); else if (e.key === 'ArrowRight') nextSlide(); });
+          updateSlider();
+        })();
+
+        // ------- Arabic slider (scoped) -------
+        (function () {
+          const projectSliderAr = document.getElementById('projectSliderAr');
+          if (!projectSliderAr) return;
+
+          const prevButtonsAr = document.querySelectorAll('#projects-ar .prev-btn');
+          const nextButtonsAr = document.querySelectorAll('#projects-ar .next-btn');
+          const sliderDotsAr = document.querySelectorAll('#projects-ar .slider-dot');
+          let currentSlideAr = 0;
+          let totalSlidesAr = projectSliderAr.querySelectorAll('.project-slide').length;
+
+          function updateSliderAr() {
+            const translateX = -currentSlideAr * 100;
+            projectSliderAr.style.transform = `translateX(${translateX}%)`;
+            sliderDotsAr.forEach((dot, index) => {
+              if (index === currentSlideAr) {
+                dot.classList.remove('bg-gray-300');
+                dot.classList.add('bg-primary');
+              } else {
+                dot.classList.remove('bg-primary');
+                dot.classList.add('bg-gray-300');
+              }
             });
-        });
+          }
 
-        // Auto-play slider
-        let autoPlayInterval = setInterval(nextSlide, 6000);
+          function nextSlideAr() {
+            currentSlideAr = (currentSlideAr + 1) % totalSlidesAr;
+            updateSliderAr();
+          }
 
-        // Pause auto-play on hover
-        const sliderWrapper = document.querySelector('.project-slider-wrapper');
-        if (sliderWrapper) {
-            sliderWrapper.addEventListener('mouseenter', () => {
-                clearInterval(autoPlayInterval);
-            });
+          function prevSlideAr() {
+            currentSlideAr = (currentSlideAr - 1 + totalSlidesAr) % totalSlidesAr;
+            updateSliderAr();
+          }
 
-            sliderWrapper.addEventListener('mouseleave', () => {
-                autoPlayInterval = setInterval(nextSlide, 6000);
-            });
+          prevButtonsAr.forEach(btn => btn.addEventListener('click', prevSlideAr));
+          nextButtonsAr.forEach(btn => btn.addEventListener('click', nextSlideAr));
+          sliderDotsAr.forEach((dot, index) => dot.addEventListener('click', () => { currentSlideAr = index; updateSliderAr(); }));
 
-            // Touch/swipe support for mobile
-            let startX = 0;
-            let endX = 0;
+          const sliderWrapperAr = document.querySelector('#projects-ar .project-slider-wrapper');
+          let autoPlayIntervalAr = setInterval(nextSlideAr, 6000);
+          if (sliderWrapperAr) {
+            sliderWrapperAr.addEventListener('mouseenter', () => clearInterval(autoPlayIntervalAr));
+            sliderWrapperAr.addEventListener('mouseleave', () => { autoPlayIntervalAr = setInterval(nextSlideAr, 6000); });
+            let startXAr = 0, endXAr = 0;
+            sliderWrapperAr.addEventListener('touchstart', e => { startXAr = e.touches[0].clientX; });
+            sliderWrapperAr.addEventListener('touchend', e => { endXAr = e.changedTouches[0].clientX; const diff = startXAr - endXAr; if (Math.abs(diff) > 50) { diff > 0 ? nextSlideAr() : prevSlideAr(); } });
+          }
 
-            sliderWrapper.addEventListener('touchstart', (e) => {
-                startX = e.touches[0].clientX;
-            });
-
-            sliderWrapper.addEventListener('touchend', (e) => {
-                endX = e.changedTouches[0].clientX;
-                handleSwipe();
-            });
-
-            function handleSwipe() {
-                const swipeThreshold = 50;
-                const diff = startX - endX;
-
-                if (Math.abs(diff) > swipeThreshold) {
-                    if (diff > 0) {
-                        nextSlide();
-                    } else {
-                        prevSlide();
-                    }
-                }
-            }
-        }
-
-        // Keyboard navigation
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowLeft') {
-                prevSlide();
-            } else if (e.key === 'ArrowRight') {
-                nextSlide();
-            }
-        });
+          // Keyboard navigation (respect RTL reading; same arrows still work)
+          document.addEventListener('keydown', e => { if (e.key === 'ArrowLeft') prevSlideAr(); else if (e.key === 'ArrowRight') nextSlideAr(); });
+          updateSliderAr();
+        })();
 
         // Services Slick Slider Initialization
         $(document).ready(function () {
