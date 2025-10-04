@@ -779,7 +779,10 @@
 
             width: 12px;
         }
+.slick-dotted.slick-slider {
 
+    direction: ltr;
+}
         /* Language Toggle Styles */
         .language-toggle {
             position: relative;
@@ -814,6 +817,10 @@
             text-align: right;
         }
 
+  [dir="rtl"] .services-slider-container .slick-prev {
+    right: -25px;
+    left: unset;
+}
      
         [dir="rtl"] .space-x-6>*+* {
             margin-left: 0;
@@ -859,7 +866,7 @@
 
         /* Override for Arabic navigation - use normal row direction */
         [dir="rtl"] .header .arabic .space-x-6 {
-            flex-direction: row;
+        flex-direction: row-reverse;;
         }
 
         [dir="rtl"] .header .space-x-6>*+* {
@@ -937,14 +944,14 @@
     <!-- Header -->
     <header id="header" class="header fixed top-0 left-0 w-full z-50 py-4">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="flex items-center justify-between">
+            <div class="flex items-center justify-between dir-[ltr]">
                 <!-- Logo -->
                 <a href="#" class="flex items-center logo-animation">
                     <img src="logo.svg" alt="AL ATHEL ESTABLISHMENT" class="h-12 w-auto object-contain logo-filter">
                 </a>
 
                 <!-- Desktop Navigation -->
-                <div class="english  hidden md:flex items-center space-x-6">
+                <div class="english  hidden md:flex items-center space-x-6 ">
                     <nav class="flex items-center space-x-6">
                         <a href="#home" class="nav-link text-sm font-medium uppercase tracking-wider"
                             data-translate="HOME">HOME</a>
@@ -980,9 +987,9 @@
                 </div>
 
                 <!-- Desktop Navigation (Arabic) -->
-                <div class="arabic hidden md:flex items-center space-x-6 space-x-reverse">
-                    <nav class="flex items-center space-x-6 space-x-reverse" >
-                                                <a href="#home-ar" class="nav-link text-sm font-medium uppercase tracking-wider">الرئيسية</a>
+                <div class="arabic hidden md:flex items-center space-x-6">
+                    <nav class="flex items-center space-x-6" >
+                                                <a href="#home-ar" class="nav-link text-sm font-medium uppercase tracking-wider pl-4">الرئيسية</a>
                         <a href="#about-ar" class="nav-link text-sm font-medium uppercase tracking-wider">من نحن</a>
        <a href="#why-choose-us-ar" class="nav-link text-sm font-medium uppercase tracking-wider">لماذا
                             تختارنا</a>
