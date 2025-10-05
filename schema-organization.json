@@ -1,0 +1,30 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "AL ATHEL ESTABLISHMENT",
+  "alternateName": "مؤسسة الأثل",
+  "url": "https://www.alathel.com",
+  "logo": "https://www.alathel.com/logo.svg",
+  "description": "Leading construction company in Saudi Arabia delivering residential, commercial, and infrastructure projects with safety, sustainability, and on-time delivery.",
+  "foundingDate": "2020",
+  "vatID": "311054980003",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "King Abdullah Branch Rd, King Salman District",
+    "addressLocality": "Riyadh",
+    "postalCode": "12444",
+    "addressCountry": "SA"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+966-50-285-8515",
+    "contactType": "customer service",
+    "email": "ENG_ATB@YAHOO.COM",
+    "availableLanguage": ["English", "Arabic"]
+  },
+  "sameAs": [
+    "https://www.linkedin.com/company/alathel",
+    "https://www.facebook.com/alathel",
+    "https://www.instagram.com/alathel"
+  ]
+}

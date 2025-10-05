@@ -1,0 +1,48 @@
+{
+  "@context": "https://schema.org",
+  "@type": "GeneralContractor",
+  "name": "AL ATHEL ESTABLISHMENT",
+  "image": "https://www.alathel.com/logo.svg",
+  "priceRange": "$$",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "King Abdullah Branch Rd, King Salman District",
+    "addressLocality": "Riyadh",
+    "postalCode": "12444",
+    "addressRegion": "Riyadh Province",
+    "addressCountry": "SA"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "24.7136",
+    "longitude": "46.6753"
+  },
+  "url": "https://www.alathel.com",
+  "telephone": "+966-50-285-8515",
+  "email": "ENG_ATB@YAHOO.COM",
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Sunday"
+    ],
+    "opens": "08:00",
+    "closes": "17:00"
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "Saudi Arabia"
+  },
+  "serviceArea": {
+    "@type": "GeoCircle",
+    "geoMidpoint": {
+      "@type": "GeoCoordinates",
+      "latitude": "24.7136",
+      "longitude": "46.6753"
+    },
+    "geoRadius": "500000"
+  }
+}

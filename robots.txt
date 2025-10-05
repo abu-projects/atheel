@@ -1,0 +1,11 @@
+# robots.txt for AL ATHEL ESTABLISHMENT
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+Disallow: /contact-form.php
+Disallow: /*.php$
+
+# Sitemap location
+Sitemap: https://www.alathel.com/sitemap.xml
+Sitemap: https://www.alathel.com/sitemap-ar.xml

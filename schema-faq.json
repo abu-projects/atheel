@@ -1,0 +1,46 @@
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What services does AL ATHEL ESTABLISHMENT provide?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "AL ATHEL ESTABLISHMENT provides comprehensive construction services including general contracting, EPC support, residential and commercial construction, infrastructure development, HVAC systems, electromechanical works, IT infrastructure, renovation, fit-out, and project management across Saudi Arabia."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where is AL ATHEL ESTABLISHMENT located?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "AL ATHEL ESTABLISHMENT is located at King Abdullah Branch Rd, King Salman District, Riyadh 12444, Saudi Arabia. We serve clients throughout Saudi Arabia including Riyadh, Jeddah, and Khamis Mushait."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is AL ATHEL ESTABLISHMENT licensed and registered?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, AL ATHEL ESTABLISHMENT is fully licensed and registered in Saudi Arabia. We are VAT registered (Registration Number: 311054980003) with the General Authority of Zakat & Tax (GAZT), and have a verified National Address."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What types of projects has AL ATHEL completed?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "AL ATHEL has completed diverse projects including ALISSA Factory HVAC installation, LEHBI Renal Care healthcare facilities, Benban Compound Villas, residential villas, commercial showrooms in Khamis Mushait, Jeddah, and Hafr Al-Batin, and various infrastructure projects across Saudi Arabia."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How can I contact AL ATHEL ESTABLISHMENT?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You can contact AL ATHEL ESTABLISHMENT by phone at +966 502858515, +966 506755001, or +966 583012080, or by email at ENG_ATB@YAHOO.COM. Our office is located in Riyadh, Saudi Arabia."
+      }
+    }
+  ]
+}
