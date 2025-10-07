@@ -412,10 +412,9 @@
         const heroVideo1 = document.getElementById('hero-video-1');
         const heroVideo2 = document.getElementById('hero-video-2');
         const videoSequence = [
-            'assets/video/hero3.mp4',
-            'assets/video/hero4.mp4',
-            'assets/video/hero1.mp4',
-            'assets/video/hero6.mp4'
+            'assets/video/hero7.mp4',
+            'assets/video/hero4.mp4'
+      
         ];
 
         let currentVideoIndex = 0;
